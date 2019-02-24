@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="couponbox" type="user.coupon.CouponBoxVO"/>
+	<typeAlias alias="coupon" type="admin.coupon.CouponVO"/>
+	
+	<resultMap class = "couponbox" id = "couponboxRes">
+		<result column = "coupon_no" property = "coupon_no"/>
+		<result column = "member_no" property = "member_no"/>
+		<result column = "coupon_chk" property = "coupon_chk"/>
+	</resultMap>
+	
+	<resultMap class = "coupon" id = "couponRes">
+		<result column = "coupon_no" property = "coupon_no"/>
+		<result column = "coupon_name" property = "coupon_name"/>
+		<result column = "coupon_price" property = "coupon_price"/>
+		<result column = "coupon_type" property = "coupon_type"/>
+		<result column = "coupon_discash" property = "coupon_discash"/>
+		<result column = "coupon_disrate" property = "coupon_disrate"/>
+		<result column = "coupon_startdate" property = "coupon_startdate"/>
+		<result column = "coupon_enddate" property = "coupon_enddate"/>
+	</resultMap>
+	
+	<select id = "selectOnecBox" resultMap = "couponboxRes" parameterClass = "couponbox">
+		select * from coupon_box
+		where coupon_no = #coupon_no# and member_no = #member_no#
+	</select>
+	
+	<select id = "selectCouponUse" resultMap = "couponRes" parameterClass = "java.util.Map">
+		select a.coupon_no, a.coupon_name, a.coupon_price, a.coupon_type, a.coupon_discash, a.coupon_disrate, a.coupon_startdate, a.coupon_enddate, b.coupon_chk
+		from coupon a join coupon_box b on a.coupon_no = b.coupon_no 
+		where b.member_no = #member_no# and a.coupon_price <![CDATA[<=]]> #coupon_price# and b.coupon_chk = 0
+	</select>
+	
+	<select id = "selectAllcBox" resultMap = "couponRes" parameterClass = "int">
+		select a.coupon_no, a.coupon_name, a.coupon_price, a.coupon_type, a.coupon_discash, a.coupon_disrate, a.coupon_startdate, a.coupon_enddate, b.coupon_chk
+		from coupon a join coupon_box b on a.coupon_no = b.coupon_no 
+		where b.coupon_chk = 0 and b.member_no = #member_no#
+	</select>
+	
+	<select id = "selectAllUsedcBox" resultMap = "couponRes" parameterClass = "int">
+		select a.coupon_no, a.coupon_name, a.coupon_price, a.coupon_type, a.coupon_discash, a.coupon_disrate, a.coupon_startdate, a.coupon_enddate, b.coupon_chk
+		from coupon a join coupon_box b on a.coupon_no = b.coupon_no 
+		where b.coupon_chk = 1 and b.member_no = #member_no#
+	</select>
+	
+	<select id = "selectSearchcBox" resultMap = "couponRes" parameterClass = "java.util.Map">
+		select a.coupon_no, a.coupon_name, a.coupon_price, a.coupon_type, a.coupon_discash, a.coupon_disrate, a.coupon_startdate, a.coupon_enddate, b.coupon_chk
+		from coupon a join coupon_box b on a.coupon_no = b.coupon_no 
+		where $searcht$ like '%'||'$searchk$'||'%' and b.coupon_chk = 0
+		order by coupon_no desc
+	</select>
+	
+	<select id = "selectCoupon" resultMap = "couponRes" parameterClass = "couponbox">
+		select a.coupon_no, a.coupon_name, a.coupon_price, a.coupon_type, a.coupon_discash, a.coupon_disrate, a.coupon_startdate, a.coupon_enddate, b.coupon_chk
+		from coupon a join coupon_box b on a.coupon_no = b.coupon_no 
+		where b.coupon_chk = 0 and b.member_no = #member_no# and b.coupon_no = #coupon_no#
+	</select>
+	
+	<insert id="insertCouponBox" parameterClass = "couponbox">
+		insert into coupon_box(coupon_no, member_no, coupon_chk)
+		values (#coupon_no#, #member_no#, #coupon_chk#)
+	</insert>
+	
+	<update id = "usedCoupon" parameterClass = "couponbox">
+		update coupon_box set coupon_chk = 1
+		where coupon_no = #coupon_no# and member_no = #member_no#
+	</update>
+	
+</sqlMap>

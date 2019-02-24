@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+	<typeAlias alias="goods" type="admin.goods.GoodsVO" />
+
+	<resultMap class="goods" id="goodsRes">
+		<result column="goods_no" property="goods_no" />
+		<result column="goods_name" property="goods_name" />
+		<result column="goods_bname" property="goods_bname" />
+		<result column="goods_content" property="goods_content" />
+		<result column="goods_readcnt" property="goods_readcnt" />
+		<result column="goods_regdate" property="goods_regdate" />
+		<result column="goods_color" property="goods_color" />
+		<result column="goods_price" property="goods_price" />
+		<result column="goods_totalcnt" property="goods_totalcnt" />
+		<result column="goods_type1" property="goods_type1" />
+		<result column="goods_type2" property="goods_type2" />
+		<result column="goods_like" property="goods_like" />
+		<result column="goods_savname" property="goods_savname" />
+		<result column="goods_orgname" property="goods_orgname" />
+	</resultMap>
+
+	<sql id="goods-select-all">
+		select * from sgoods
+	</sql>
+
+	<sql id="goods-where-no">
+		where goods_no = #goods_no#
+	</sql>
+
+	<select id="selectAllGoods" resultMap="goodsRes">
+		<include refid="goods-select-all" />
+		order by goods_no desc, goods_like asc
+	</select>
+	
+	<select id="selectTypeGoods" resultMap="goodsRes" parameterClass = "String">
+		<include refid="goods-select-all"/>
+		where goods_type2 = #goods_type2#
+		order by goods_no desc
+	</select>
+	
+	<select id="selectBrandGoods" resultMap="goodsRes" parameterClass = "String">
+		<include refid="goods-select-all"/>
+		where goods_bname = #goods_bname#
+		order by goods_no desc
+	</select>
+
+	<select id="selectLastGoods" resultClass="goods">
+		SELECT max(goods_no) as
+		goods_no FROM SGOODS
+	</select>
+
+	<select id="goodsSelectOne" resultMap="goodsRes">
+		<include refid="goods-select-all" />
+		<include refid="goods-where-no" />
+	</select>
+
+	<!-- 검색 -->
+	<select id="selectSearchGoods" resultMap="goodsRes" parameterClass="java.util.Map">
+		<include refid="goods-select-all" />
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by goods_no desc,
+		goods_like asc
+	</select>
+	
+	<select id="selectBestTen" resultMap="goodsRes">
+		<include refid="goods-select-all" />
+		order by goods_like desc, goods_no asc
+	</select>
+
+	<!-- 등록 -->
+	<insert id="insertGoods" parameterClass="goods"> <!-- goods_img를 지웠음 -->
+		insert into
+		sgoods(goods_no, goods_name, goods_bname, goods_content,
+		goods_readcnt, goods_regdate, goods_color, goods_price,
+		goods_totalcnt, goods_type1, goods_type2, goods_like )
+		values
+		(sgoods_no_seq.nextval,
+		#goods_name#, #goods_bname#, #goods_content#,
+		#goods_readcnt#,
+		#goods_regdate#, #goods_color#, #goods_price#,
+		#goods_totalcnt#,
+		#goods_type1#, #goods_type2#, #goods_like# )
+	</insert>
+
+	<update id="updateFile" parameterClass="goods">
+		UPDATE SGOODS SET GOODS_ORGNAME = #goods_orgname#, GOODS_SAVNAME =
+		#goods_savname#
+		<include refid="goods-where-no" />
+	</update>
+
+	<!-- 수정 -->
+	<update id="updateGoods" parameterClass="goods">
+		update sgoods set
+		goods_name = #goods_name#, goods_bname =
+		#goods_bname#,
+		goods_content =
+		#goods_content#, goods_price =
+		#goods_price#,
+		goods_totalcnt =
+		#goods_totalcnt#, goods_type1 =
+		#goods_type1#, goods_type2 = #goods_type2#, 
+		goods_color = #goods_color#
+		<include refid="goods-where-no" />
+	</update>
+
+	<!-- 조회수 증가 -->
+	<update id="updateGoodsReadcnt" parameterClass="goods">
+		update sgoods set goods_readcnt = goods_readcnt + 1
+		<include refid="goods-where-no" />
+	</update>
+
+	<!-- 찜하기 증가 -->
+	<update id="updateGoodsLike" parameterClass="goods">
+		update sgoods set goods_like = goods_like + 1
+		<include refid="goods-where-no" />
+	</update>
+
+	<update id="deleteGoods" parameterClass="goods">
+		DELETE FROM SGOODS 
+		<include refid="goods-where-no" />
+	</update>
+
+
+
+</sqlMap>

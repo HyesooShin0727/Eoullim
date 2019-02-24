@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+
+	<typeAlias alias="admin_member" type="user.member.MemberVO" />
+	
+	<resultMap id="MemberRes" class="admin_member">
+		
+		<result column = "member_no" property = "member_no"/>
+		<result column = "member_id" property = "member_id"/>
+		<result column = "member_kakaoid" property = "member_kakaoid"/>
+		<result column = "member_passwd1" property = "member_passwd1"/>
+		<result column = "member_passwd2" property = "member_passwd2"/>
+		<result column = "member_age" property = "member_age"/>
+		<result column = "member_name" property = "member_name"/>
+		<result column = "member_sex" property = "member_sex"/>
+		<result column = "member_jumin1" property = "member_jumin1"/>
+		<result column = "member_jumin2" property = "member_jumin2"/>
+		<result column = "member_phone" property = "member_phone"/>
+		<result column = "member_email1" property = "member_email1"/>
+		<result column = "member_email2" property = "member_email2"/>
+		<result column = "member_zipcode" property = "member_zipcode"/>
+		<result column = "member_address1" property = "member_address1"/>
+		<result column = "member_address2" property = "member_address2"/>
+		<result column = "member_regdate" property = "member_regdate"/>
+		<result column = "member_depositor" property = "member_depositor"/>
+		<result column = "member_bankname" property = "member_bankname"/>
+		<result column = "member_accountno" property = "member_accountno"/>
+		<result column = "isadmin" property = "isadmin"/>
+	</resultMap>
+	
+	<!-- 공통으로 사용할 SQL문 설정  -->
+	<sql id = "ADM-select-all">
+		select * from smember
+	</sql>
+
+	<sql id = "ADM-select-no">
+		where member_no = #member_no#
+	</sql>
+	
+	
+	<select id = "selectAllADM" resultMap = "MemberRes" parameterClass = "int">
+		<include refid = "ADM-select-all" />
+		where isadmin = 0 
+		order by member_no desc
+	</select>
+	
+	<select id = "selectOneADM" resultMap ="MemberRes" parameterClass = "int">
+		<include refid = "ADM-select-all" />
+		<include refid = "ADM-select-no" />
+	</select>
+	
+	<select id = "selectOneADM_ID" resultMap ="MemberRes">
+		<include refid = "ADM-select-all" />
+		where member_id = #meber_id#, 
+	</select>
+	
+	<select id ="selectLastNoADM" resultClass="admin_member" parameterClass="int">
+		select max(member_no) as member_no from smember
+	</select>
+	
+	<delete id = "deleteADM" parameterClass="admin_member">
+		delete from smember
+		<include refid="ADM-select-no" />
+	</delete>
+	
+	
+	<!-- 회원검색  -->
+	<select id="search_ADM_NAME" resultMap = "MemberRes">
+		select * from smember where member_name like #SearchKeyword#
+	</select>
+	
+	<select id="search_ADM_ID" resultMap = "MemberRes">
+		select * from smember where member_id like #SearchKeyword#
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="qna" type="user.QnA.QnAVO"/>
+	
+	<resultMap class = "qna" id = "qnaRes">
+		<result column = "qna_no" property = "qna_no"/>
+		<result column = "qna_sub" property = "qna_sub"/>
+		<result column = "qna_name" property = "qna_name"/>
+		<result column = "qna_content" property = "qna_content"/>
+		<result column = "qna_readhit" property = "qna_readhit"/>
+		<result column = "qna_regdate" property = "qna_regdate"/>
+		<result column = "ref" property = "ref"/>
+		<result column = "re_step" property = "re_step"/>
+		<result column = "re_level" property = "re_level"/>
+		<result column = "img_file" property = "img_file"/>
+		<result column = "qna_status" property = "qna_status"/>
+	</resultMap>
+	<sql id = "qna-select-all">
+      select * from qna
+   </sql>
+   
+   <sql id = "qna-where-no">
+      where qna_no = #qna_no#
+   </sql>
+   
+	<select id="selectAllQnA" resultMap = "qnaRes">
+		<include refid="qna-select-all"/>
+		order by ref desc, re_level asc
+	</select>
+	
+	<select id="selectAllmyQnA" resultMap = "qnaRes" parameterClass = "String">
+		<include refid="qna-select-all"/>
+		where qna_name = #qna_name#
+		order by qna_no
+	</select>
+	
+	<select id="selectOneQnA" resultMap = "qnaRes" parameterClass = "int">
+		<include refid="qna-select-all"/>
+		<include refid="qna-where-no"/>
+	</select>
+	
+	<select id="selectreplyQnA" resultMap = "qnaRes" parameterClass = "int">
+		<include refid="qna-select-all"/>
+		where ref = #ref# and re_level = 1
+	</select>
+	
+	<select id="selectLastNoQnA" resultClass = "qna">
+		select max(qna_no) as qna_no from qna
+	</select>
+	
+	<select id = "selectSearchQnA" resultMap = "qnaRes" parameterClass = "java.util.Map">
+		<include refid="qna-select-all"/>
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by ref desc, re_step asc
+	</select>
+	
+	<insert id="insertQnA" parameterClass = "qna">
+		insert into qna (qna_no, qna_sub, qna_name, qna_content, qna_readhit, qna_regdate, ref, re_step, re_level, img_file, qna_status) 
+		values (qna_no_seq.nextval, #qna_sub#, #qna_name#, #qna_content#, #qna_readhit#, #qna_regdate#, qna_no_seq.currval, #re_step#, #re_level#, #img_file#, #qna_status#)
+	</insert>
+	
+	<insert id="insertReplyQnA" parameterClass = "qna">
+		insert into qna (qna_no, qna_sub, qna_name, qna_content, qna_readhit, qna_regdate, ref, re_step, re_level, img_file, qna_status) 
+		values (qna_no_seq.nextval, #qna_sub#, #qna_name#, #qna_content#, #qna_readhit#, #qna_regdate#, #ref#, #re_step#, #re_level#, #img_file#, #qna_status#)
+	</insert>
+	
+	<update id="updateQnA" parameterClass = "qna">
+		update qna set qna_sub = #qna_sub#, qna_content = #qna_content#, img_file = #img_file#
+		<include refid="qna-where-no"/>
+	</update>
+	
+	<update id="updateReplyQnA" parameterClass="qna">
+		update qna set re_step = re_step+1 where ref = #ref# and re_step = #re_step# 
+	</update>
+	
+	<update id="updateQnAstatus" parameterClass="int">
+		update qna set qna_status = 1 where qna_no = #qna_no#
+	</update>
+	
+	<update id = "updateFileQnA" parameterClass = "qna">
+		update qna set img_file = #img_file#
+		<include refid="qna-where-no"/>
+	</update>
+	
+	<delete id="deleteQnA" parameterClass = "qna">
+		delete from qna
+		<include refid="qna-where-no"/>
+	</delete>
+</sqlMap>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="coupon" type="admin.coupon.CouponVO"/>
+	
+	<resultMap class = "coupon" id = "couponRes">
+		<result column = "coupon_no" property = "coupon_no"/>
+		<result column = "coupon_name" property = "coupon_name"/>
+		<result column = "coupon_price" property = "coupon_price"/>
+		<result column = "coupon_type" property = "coupon_type"/>
+		<result column = "coupon_discash" property = "coupon_discash"/>
+		<result column = "coupon_disrate" property = "coupon_disrate"/>
+		<result column = "coupon_startdate" property = "coupon_startdate"/>
+		<result column = "coupon_enddate" property = "coupon_enddate"/>
+	</resultMap>
+	
+	<sql id = "coupon-select-all">
+		select * from coupon
+	</sql>
+	
+	<sql id = "coupon-where-no">
+		where coupon_no = #coupon_no#
+	</sql>
+	
+	<select id = "selectAllCoupon" resultMap = "couponRes">
+		<include refid="coupon-select-all"/>
+		order by coupon_no desc
+	</select>
+	
+	<select id = "selectLastCoupon" resultClass = "coupon">
+		select max(coupon_no) as coupon_no from coupon
+	</select>
+	
+	<select id = "selectOneCoupon" resultClass = "coupon">
+		<include refid="coupon-select-all"/>
+		<include refid="coupon-where-no"/>
+	</select>
+	
+	<select id = "selectSearchCoupon" resultMap = "couponRes" parameterClass = "java.util.Map">
+		<include refid="coupon-select-all"/>
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by coupon_no desc
+	</select>
+	
+	<insert id = "insertCoupon" parameterClass = "coupon">
+		insert into coupon(coupon_no, coupon_name, coupon_price, coupon_type, coupon_discash, coupon_disrate, coupon_startdate, coupon_enddate)
+		values (coupon_no_seq.nextval, #coupon_name#, #coupon_price#, #coupon_type#, #coupon_discash#, #coupon_disrate#, #coupon_startdate#, #coupon_enddate#)
+	</insert>
+	
+	<update id = "updateCoupon" parameterClass = "coupon">
+		update coupon set coupon_name = #coupon_name#, coupon_price = #coupon_price#, coupon_type = #coupon_type#, coupon_discash = #coupon_discash#, coupon_disrate = #coupon_disrate#, coupon_enddate = #coupon_enddate#
+		<include refid="coupon-where-no"/>
+	</update>
+	
+	<delete id = "deleteCoupon" parameterClass = "coupon">
+		delete from coupon
+		<include refid="coupon-where-no"/>
+	</delete>
+</sqlMap>

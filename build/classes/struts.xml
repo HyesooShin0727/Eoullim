@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" extends="struts-default">
+	
+	<result-types>
+		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+	</result-types>
+		
+		<!-- 사용자/관리자 메인페이지 및 로그인/로그아웃 회원가입 -->
+		<!-- class 수정 필요 -->
+		<action name="main" class="main.MainAction">
+			<result name="success" type="tiles">main</result>
+			<result name="login" type="redirect-action">
+				<param name="actionName">adminmemberlist</param>
+			</result>
+		</action>
+		
+		<action name="loginform" class= "user.member.MemberAction">
+			<result name="success" type="tiles">login</result>
+		</action>
+		
+		<action name="loginAction" class = "user.member.login.LoginAction" method = "login">
+			<result name="success" type="redirect-action">
+				<param name="actionName">main</param>
+			</result>
+			<result name="login" type="redirect-action">
+				<param name="actionName">adminmemberlist</param>
+			</result>
+			<result name="error">/user/member/LoginError.jsp</result>
+		</action>
+		
+		<action name="logoutAction" class = "user.member.login.LoginAction" method = "logout">
+			<result name="success" type="redirect-action">
+				<param name="actionName">main</param>
+			</result>
+		</action>
+		
+		<action name="findform" class= "user.member.MemberAction">
+			<result name="success" type="tiles">findform</result>
+		</action>
+		
+		<action name="findidform" class = "user.member.MemberAction">
+			<result name="success" type="tiles">findidform</result>
+		</action>
+		
+		<action name="findIdAction" class = "user.member.MemberFindIdAction" method = "find">
+			<result name="success" type="tiles">findidresult</result>
+			<result name="error">/user/member/LoginError.jsp</result>
+		</action>
+		
+		<action name="findpwform" class = "user.member.MemberAction">
+			<result name="success" type="tiles">findpwform</result>
+		</action>
+		
+		<action name="findPwAction" class = "user.member.MemberFindPwAction" method = "find">
+			<result name="success" type="tiles">findpwresult</result>
+			<result name="error">/user/member/LoginError.jsp</result>
+		</action>
+		
+		<action name="joinform1" class= "user.member.MemberAction">
+			<result name="success" type="tiles">joinform1</result>
+		</action>
+		
+		<action name="joinform2" class= "user.member.MemberAction">
+			<result name="success" type="tiles">joinform2</result>
+		</action>
+		
+		<action name="CheckIdAction" class="user.member.CheckIdAction">
+			<result>/user/member/CheckId.jsp</result>
+		</action>
+		
+		<action name="joinAction" class = "user.member.MemberAction" method = "join">
+			<result name="success" type="tiles">joinform3</result>
+		</action>
+		
+		
+		
+		
+		
+		<!-- 2019.01.13 여기까지 공부완료!!  -->
+		<!-- 마이페이지 -->
+		<action name="myorder" class = "user.order.listAction">
+			<result name="success" type="tiles">myorderlist</result>
+		</action>
+
+		<action name="msgbox" class = "message.ListAction">
+			<result name="success" type="tiles">msgbox</result>
+		</action>
+		
+		<action name="msgviewAction" class = "message.ViewAction">
+			<result name="success" type="tiles">msgview</result>
+		</action>
+		
+		<action name="msgwriteform" class = "message.WriteAction" method = "form">
+			<result name="success" type="tiles">msgwriteform</result>
+		</action>
+		
+		<action name="msgwriteAction" class = "message.WriteAction">
+			<result name="success" type="tiles">msgwritesuccess</result>
+		</action>
+		
+		<action name="findrevidAction" class = "user.member.MemberListAction">
+			<result>/Message/Findrevid.jsp</result>
+		</action>
+		
+		<action name="msgdeleteAction" class = "message.DeleteAction">
+			<result type="chain">msgbox</result>
+		</action>
+		
+		<action name="mypagemain" class= "user.mypage.MyPageAction">
+			<result name="success" type="tiles">mypagemain</result>
+		</action>
+		
+		<action name="mycoupon" class = "user.coupon.ListAction">
+			<result name="success" type="tiles">mycoupon</result>
+		</action>
+		
+		<action name="usedcoupon" class = "user.coupon.ListAction" method = "used">
+			<result name="success" type="tiles">usedcoupon</result>	
+		</action>
+		
+		<action name="modifyform" class = "user.member.ModifyAction">
+			<result name="success" type="tiles">modifyform</result>
+		</action>
+		
+		<action name="PassUpdateAction" class = "user.member.ModifyAction" method = "passUpdate">
+			<result name="success" type="redirect-action">
+				<param name="actionName">modifyform</param>
+			</result>
+			<result name="error">/user/member/PwError.jsp</result>
+		</action>
+		
+		<action name="InfomUpdateAction" class = "user.member.ModifyAction" method = "informUpdate">
+			<result name="success" type="redirect-action">
+				<param name="actionName">modifyform</param>
+			</result>
+		</action>
+		
+		<action name="byeAction" class = "user.member.MemberDeleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">logoutAction</param>
+			</result>
+		</action>
+		
+		<action name="qnalistAction" class = "user.QnA.listAction">
+			<result name="success" type="tiles">qnalist</result>
+			<result name="error">/etc/NotLoginError.jsp</result>
+		</action>
+		
+		<action name="qnaviewAction" class = "user.QnA.viewAction">
+			<result name="success" type="tiles">qnaview</result>
+		</action>
+		
+		<action name="qnawriteform" class = "user.QnA.writeAction" method = "form">
+			<result name="success" type="tiles">qnawriteform</result>
+		</action>
+		
+		<action name="qnawriteAction" class = "user.QnA.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">qnalistAction</param>
+			</result>
+		</action>
+		
+		<!-- 상품 -->
+		<action name="goodslistAction" class = "user.goods.ListAction">
+			<result name="success" type="tiles">goodslist</result>
+		</action>
+		
+		<action name="goodsViewAction" class="user.goods.ViewAction">
+			<result name="success" type="tiles">usergoodsview</result>
+		</action>
+		
+		<!-- 찜하기 -->
+		<!-- 유저 찜하기 리스트 항항 -->
+		<action name="UWListAction" class="user.wishlist.ListAction">
+			<result name = "success" type="tiles">wishlist</result>
+		</action>
+
+		<!-- 찜하기 리스트 액션 -->
+		<action name="AddWishAction" class="user.wishlist.AddWishlistAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">UWListAction</param>
+			</result>
+			<result name="error">/etc/NotLoginError.jsp</result>
+		</action>
+
+		<!-- 위시리스트 삭제 -->
+		<action name="WishDeleteAction" class="user.wishlist.WishDeleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">UWListAction</param>
+			</result>
+		</action>
+		
+		<!-- 장바구니 -->
+		
+		<!-- 유저 장바구니 리스트 항항 -->
+		<action name="UCListAction" class="user.cart.ListAction">
+			<result name="success" type="tiles">cartlist</result>
+		</action>
+
+		<!-- 장바구니 추가 -->
+		<action name="AddCartAction" class="user.cart.AddToCartAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">UCListAction</param>
+			</result>
+			<result name="error">/etc/NotLoginError.jsp</result>
+		</action>
+		
+		<!-- 장바구니 삭제 -->
+		<action name="CartDeleteAction" class="user.cart.CartDeleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">UCListAction</param>
+			</result>
+		</action>
+		
+		<!-- 장바구니 변경 -->
+		<action name="CartModifyAction" class="user.cart.CartModifyAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">UCListAction</param>
+			</result>
+		</action>
+		
+		<!-- 장바구니에서 주문으로 -->
+		<action name="AddToOrderAction" class="user.order.AddToOrderAction">
+			<result name="success" type="tiles">orderlist</result>
+		</action>
+		
+		<action name="selectcoupon" class = "user.coupon.ListAction" method = "select">
+			<result name = "success">/user/coupon/CouponSelect.jsp</result>
+		</action>
+		
+		<!-- 결제완료 -->
+		<action name="InsertOrderAction" class="user.order.InsertOrderAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">main</param>
+			</result>
+		</action>
+		
+		<!-- 게시판 -->
+		
+		<!-- 리뷰 게시판 -->
+		<action name="reviewlistAction" class = "user.review.listAction">
+			<result name="success" type="tiles">reviewlist</result>
+		</action>
+		
+		<action name="reviewviewAction" class= "user.review.viewAction">
+			<result name="success" type="tiles">reviewview</result>
+		</action>
+		
+		<action name="reviewwriteform" class = "user.review.writeAction" method = "form">
+			<result name="success" type="tiles">reviewwriteform</result>
+			<result name="error">/etc/NotLoginError.jsp</result>
+		</action>
+		
+		<action name="reviewwriteAction" class = "user.review.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">reviewlistAction</param>
+			</result>
+		</action>
+		
+		<action name="reviewcheck" class = "user.review.viewAction" method = "checkForm">
+			<result name="success">/user/review/checkPassword.jsp</result>
+		</action>
+		
+		<action name="reviewcommentcheck" class="user.review.viewAction" method="checkForm">
+			<result>/user/review/checkPassword2.jsp</result>
+		</action>
+		
+		<action name="reviewcheckAction" class = "user.review.viewAction" method = "checkAction">
+			<result name="success">/user/review/checkSuccess.jsp</result>
+			<result name="error">/user/review/checkError.jsp</result>
+		</action>
+		
+		<action name="reviewcommentcheckAction" class="user.review.viewAction" method="checkAction2">
+			<result name="success">/user/review/checkSuccess.jsp</result>
+			<result name="error">/user/review/checkError.jsp</result>
+		</action>
+		
+		<action name="reviewwritecommentAction" class="user.review.commentWriteAction">
+			<result type="chain">reviewviewAction</result>
+		</action>
+		
+		<action name="reviewmodifyform" class="user.review.writeAction" method="form">
+			<result name="success" type="chain">reviewwriteform</result>
+		</action>
+		
+		<action name="reviewmodifyAction" class="user.review.modifyAction">
+			<result type="chain">reviewviewAction</result>
+		</action>
+		
+		<action name="reviewdeleteAction" class = "user.review.deleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">reviewlistAction</param>
+			</result>
+		</action>
+		
+		<action name="reviewcommentdeleteAction" class="user.review.deleteAction" method="execute2">
+			<result type="chain">reviewviewAction</result>
+		</action>
+		
+		<action name="reviewLikesAction" class="user.review.listAction" method="likes">
+			<result type="chain">reviewviewAction</result>
+		</action>
+		
+		<!-- 중고거래 -->
+		<action name="usedlistAction" class = "user.used.listAction">
+			<result name="success" type="tiles">usedlist</result>
+		</action>
+		
+		<action name="usedwriteform" class = "user.used.writeAction" method = "form">
+			<result name="success" type="tiles">usedwriteform</result>
+			<result name="error">/etc/NotLoginError.jsp</result>
+		</action>
+		
+		<action name="usedwriteAction" class = "user.used.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<action name="usedviewAction" class = "user.used.viewAction">
+			<result name="success" type="tiles">usedview</result>
+		</action>
+		
+		<action name="usedmodifyform" class="user.used.viewAction">
+			<result type="chain">
+				<param name="actionName">usedwriteform</param>
+			</result>
+		</action>
+		
+		<action name="usedmodifyAction" class = "user.used.modifyAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<action name="useddeleteAction" class="user.used.deleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<action name="usedcheck" class = "user.used.viewAction" method = "checkForm">
+			<result name="success">/user/used/checkPassword.jsp</result>
+		</action>
+		
+		<action name="usedcheckAction" class = "user.used.viewAction" method = "checkAction">
+			<result name="error">/user/used/checkError.jsp</result>
+			<result>/user/used/checkSuccess.jsp</result>
+		</action>
+		
+		<action name="usedcommentcheck" class="user.used.viewAction" method="checkForm">
+			<result>/user/used/checkPassword2.jsp</result>
+		</action>
+		
+		<action name="usedcommentcheckAction" class="user.used.viewAction" method="checkAction2">
+			<result name="error">/user/used/checkError.jsp</result>
+			<result>/user/used/checkSuccess.jsp</result>
+		</action>
+		
+		<action name="usedwritecommentAction" class="user.used.commentWriteAction">
+			<result type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<action name="useddeletecommentAction" class="user.used.deleteAction" method="execute2">
+			<result type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<action name="Uboard_replyForm" class="user.used.writeAction" method="reply">
+			<result type="tiles">usedwriteform</result>
+		</action>
+		
+		<action name="Uboard_replyAction" class="user.used.writeAction">
+			<result type="redirect-action">
+				<param name="actionName">usedlistAction</param>
+			</result>
+		</action>
+		
+		<!-- 공지사항 -->
+		<action name="noticelistAction" class = "admin.notice.listAction">
+			<result name="success" type="tiles">noticelist</result>
+		</action>
+		
+		<action name="noticeviewAction" class = "admin.notice.viewAction">
+			<result name="success" type="tiles">noticeview</result>
+		</action>
+		
+		
+		<!-- FAQ -->
+		<action name="faqlistAction" class = "user.faq.listAction">
+			<result name="success" type="tiles">faqlist</result>
+		</action>
+		
+		<action name="faqviewAction" class = "user.faq.viewAction">
+			<result name="success" type="tiles">faqview</result>
+		</action>
+		
+		
+		<!-- footer 링크 -->
+		<action name="agree" class = "user.member.MemberAction">
+			<result name="success" type="tiles">agree</result>
+		</action>
+		
+		<action name="privacy" class = "user.member.MemberAction">
+			<result name="success" type="tiles">privacy</result>
+		</action>
+		
+		<action name="store" class = "user.member.MemberAction">
+			<result name="success" type="tiles">store</result>
+		</action>
+	
+	</package>
+	
+	<package name="admin" extends="struts-default">
+	
+	<result-types>
+		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+	</result-types>
+	
+		<!-- 회원관리 -->
+	
+		<action name="adminmemberlist" class = "admin.member.ListAction">
+			<result name="success" type="tiles">adminmemberlist</result>
+		</action>
+		
+		<action name="adminmemberview" class = "admin.member.ViewAction">
+			<result name="success" type="tiles">adminmemberview</result>
+		</action>
+		
+		<action name="adminmemberdelete" class = "admin.member.DeleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminmemberlist</param>
+			</result>
+		</action>
+		
+		<!-- 주문관리 -->
+		<action name="adminorderlist" class = "admin.order.listAction">
+			<result name="success" type="tiles">adminorderlist</result>
+		</action>
+		
+		<action name="orderstatemodify" class = "admin.order.modifystateAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminorderlist</param>
+			</result>
+		</action>
+		
+		<!-- 상품관리 -->
+		<action name="admingoodslist" class = "admin.goods.ListAction">
+			<result name="success" type="tiles">admingoodslist</result>
+		</action>
+		
+		<action name="admingoodsview" class = "admin.goods.ViewAction">
+			<result name="success" type="tiles">admingoodsview</result>
+		</action>
+		
+		<action name="admingoodswriteform" class = "admin.goods.WriteAction" method = "form">
+			<result name="success" type="tiles">admingoodswrite</result>
+		</action>
+		
+		<action name="admingoodswrite" class = "admin.goods.WriteAction">
+			<result type="redirect-action">
+				<param name="actionName">admingoodslist</param>
+			</result>
+		</action>
+		
+		<action name="admingoodsmodifyform" class = "admin.goods.ViewAction">
+			<result name="success" type="chain">admingoodswriteform</result>
+		</action>
+		
+		<action name="admingoodsmodify" class = "admin.goods.ModifyAction">
+			<result name="success" type="chain">admingoodsview</result>
+		</action>
+		
+		<action name="admingoodsdelete" class = "admin.goods.DeleteAction">
+			<result type="redirect-action">
+				<param name="actionName">admingoodslist</param>
+			</result>
+		</action>
+		
+		<!-- 게시판관리 -->
+		
+		<!-- QNA관리 -->
+		<action name="adminqnalist" class = "admin.QnA.listAction">
+			<result name="success" type="tiles">adminqnalist</result>
+		</action>
+		
+		<action name="adminqnaview" class = "admin.QnA.viewAction">
+			<result name="success" type="tiles">adminqnaview</result>
+		</action>
+		
+		<action name="adminqnareply" class = "admin.QnA.writeAction" method = "reply">
+			<result name="success" type="tiles">adminqnawrite</result>
+		</action>
+		
+		<action name="adminqnareplyaction" class = "admin.QnA.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminqnalist</param>
+			</result>
+		</action>
+		
+		<action name="adminqnadelete" class = "admin.QnA.deleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminqnalist</param>
+			</result>
+		</action>
+		
+		<!-- FAQ관리 -->
+		<action name="adminfaqlist" class = "admin.faq.listAction">
+			<result name="success" type="tiles">adminfaqlist</result>
+		</action>
+		
+		<action name="adminfaqview" class = "admin.faq.viewAction">
+			<result name="success" type="tiles">adminfaqview</result>
+		</action>
+		
+		<action name="adminfaqwriteform" class = "admin.faq.writeAction" method = "form">
+			<result name="success" type="tiles">adminfaqwrite</result>
+		</action>
+		
+		<action name="adminfaqwrite" class = "admin.faq.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminfaqlist</param>
+			</result>
+		</action>
+		
+		<action name="adminfaqmodifyform" class = "admin.faq.viewAction">
+			<result name="success" type="chain">adminfaqwriteform</result>
+		</action>
+		
+		<action name="adminfaqmodify" class = "admin.faq.modifyAction">
+			<result name="success" type="chain">adminfaqview</result>
+		</action>
+		
+		<action name="adminfaqdelete" class = "admin.faq.deleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminfaqlist</param>
+			</result>
+		</action>
+		
+		<!-- 공지사항 관리 -->
+		<action name="adminnoticelist" class="admin.notice.listAction">
+			<result name="success" type="tiles">adminnoticelist</result>
+		</action>
+
+		<action name="adminnoticeview" class="admin.notice.viewAction">
+			<result name="success" type="tiles">adminnoticeview</result>
+		</action>
+
+		<action name="adminnoticewriteform" class="admin.notice.writeAction" method="form">
+			<result name="success" type="tiles">adminnoticewriteform</result>
+		</action>
+
+		<action name="adminnoticewriteAction" class="admin.notice.writeAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminnoticelist</param>
+			</result>
+		</action>
+
+		<action name="adminnoticemodifyform" class="admin.notice.viewAction">
+			<result type="chain">adminnoticewriteform</result>
+		</action>
+
+		<action name="adminnoticemodifyAction" class="admin.notice.modifyAction">
+			<result type="chain">adminnoticeview</result>
+		</action>
+
+		<action name="adminnoticedelete" class="admin.notice.deleteAction">
+			<result name="success" type="redirect-action">
+				<param name="actionName">adminnoticelist</param>
+			</result>
+		</action>
+		
+		<!-- 쿠폰관리 -->
+		
+		<action name="admincouponlist" class = "admin.coupon.ListAction">
+			<result name="success" type="tiles">admincouponlist</result>
+		</action>
+		
+		<action name="admincouponview" class = "admin.coupon.ViewAction">
+			<result name="success" type="tiles">admincouponview</result>
+		</action>
+		
+		<action name = "CouponWriteForm" class= "admin.coupon.WriteAction" method = "form">
+			<result name="success" type="tiles">admincouponwrite</result>
+		</action>
+		
+		<action name = "CouponWriteAction" class = "admin.coupon.WriteAction">
+			<result type="redirect-action">
+				<param name="actionName">admincouponlist</param>
+			</result>
+		</action> 
+		
+		<action name = "CouponModifyForm" class= "admin.coupon.ViewAction">
+			<result type = "chain">CouponWriteForm</result>
+		</action>
+		
+		<action name = "CouponModifyAction" class = "admin.coupon.ModifyAction">
+			<result type = "chain">admincouponview</result>
+		</action>
+		
+		<action name="CouponDeleteAction" class="admin.coupon.DeleteAction">
+			<result type="redirect-action">
+				<param name="actionName">admincouponlist</param>
+			</result>
+		</action>
+		
+		<action name="findcouponrevid" class = "admin.coupon.CouponMemberListAction">
+			<result name="success">/admin/coupon/SendCoupon.jsp</result>
+		</action>
+		
+		<action name = "CouponSendAction" class = "admin.coupon.SendAction">
+			<result type="redirect-action">
+				<param name="actionName">admincouponlist</param>
+			</result>
+		</action>
+	</package>
+</struts>

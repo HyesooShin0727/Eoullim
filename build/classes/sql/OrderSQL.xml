@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="order" type="user.order.OrderVO"/>
+	
+	<resultMap class="order" id="orderRes">
+		<result column = "order_no" property = "order_no"/>
+		<result column = "order_member_id" property = "order_member_id"/>
+		<result column = "order_name" property = "order_name"/>
+		<result column = "order_phone" property = "order_phone"/>
+		<result column = "order_email1" property = "order_email1"/>
+		<result column = "order_email2" property = "order_email2"/>
+		
+		<result column = "rec_name" property = "rec_name"/>
+		<result column = "rec_phone" property = "rec_phone"/>
+		<result column = "rec_zipcode" property = "rec_zipcode"/>
+		<result column = "rec_address1" property = "rec_address1"/>
+		<result column = "rec_address2" property = "rec_address2"/>
+		<result column = "order_payment" property = "order_payment"/>
+		<result column = "order_regdate" property = "order_regdate"/>
+		<result column = "order_state" property = "order_state"/>
+		<result column = "order_total" property = "order_total"/>
+		<result column = "order_goods_no" property = "order_goods_no"/>
+		<result column = "order_goods_amount" property = "order_goods_amount"/>
+		<result column = "order_goods_name" property = "order_goods_name"/>
+		<result column = "order_goods_color" property = "order_goods_color"/>
+	</resultMap>
+	
+	<sql id = "order-select-all"> 
+		select * from orders
+	</sql>
+	
+	<sql id = "order-where-no">
+		where order_no = #order_no#
+	</sql>
+	
+	<select id="selectOrder" resultMap = "orderRes" parameterClass = "int">
+		<include refid="order-select-all"/>
+		<include refid="order-where-no"/>
+	</select>
+	
+	<select id="selectAllOrder" resultMap= "orderRes">
+		<include refid="order-select-all"/>
+		order by order_no desc
+	</select>
+	
+	<select id="selectAllmyOrder" resultMap= "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id#
+		order by order_no desc
+	</select>
+	
+	<select id = "selectSearchOrder" resultMap = "orderRes" parameterClass = "java.util.Map">
+		<include refid="order-select-all"/>
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by order_no desc
+	</select>
+	
+	<select id = "MyorderstateOne" resultMap = "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id# and order_state = 1
+	</select>
+	
+	<select id = "MyorderstateTwo" resultMap = "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id# and order_state = 2
+	</select>
+	
+	<select id = "MyorderstateThree" resultMap = "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id# and order_state = 3
+	</select>
+	
+	<select id = "MyorderstateFour" resultMap = "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id# and order_state = 4
+	</select>
+	
+	<select id = "MyorderstateFive" resultMap = "orderRes" parameterClass = "String">
+		<include refid="order-select-all"/>
+		where order_member_id = #order_member_id# and order_state = 5
+	</select>
+	
+	<insert id="insertOrders" parameterClass="order">
+		INSERT INTO ORDERS(order_no, order_member_id, order_name, order_phone, order_email1, order_email2,
+		rec_name, rec_zipcode, rec_address1, rec_address2, rec_phone, order_payment, order_regdate, order_state, order_total, order_goods_no, order_goods_amount, order_goods_name, order_goods_color)
+		 values(order_no_seq.nextval, #order_member_id#, #order_name#, #order_phone#, #order_email1#, #order_email2#,
+		#rec_name#, #rec_zipcode#, #rec_address1#, #rec_address2#, #rec_phone#, #order_payment#, #order_regdate#, #order_state#, #order_total#, #order_goods_no#, #order_goods_amount#, #order_goods_name#, #order_goods_color#) 
+	</insert>
+	
+	<update id="updateorderstate" parameterClass = "order">
+		update orders set order_state = #order_state#
+		where order_no = #order_no#
+	</update>
+	
+	
+	
+</sqlMap>
+	

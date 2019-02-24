@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+   <!-- 데이터를 꺼낼때 사용할것을 지정 -->
+   <typeAlias alias="member" type="user.member.MemberVO"/>
+   
+   <resultMap class = "member" id = "memberRes">
+      <result column = "member_no" property = "member_no"/>
+      <result column = "member_id" property = "member_id"/>
+      <result column = "member_kakaoid" property = "member_kakaoid"/>
+      <result column = "member_passwd1" property = "member_passwd1"/>
+      <result column = "member_passwd2" property = "member_passwd2"/>
+      <result column = "member_age" property = "member_age"/>
+      <result column = "member_name" property = "member_name"/>
+      <result column = "member_sex" property = "member_sex"/>
+      <result column = "member_jumin1" property = "member_jumin1"/>
+      <result column = "member_jumin2" property = "member_jumin2"/>
+      <result column = "member_phone" property = "member_phone"/>
+      <result column = "member_email1" property = "member_email1"/>
+      <result column = "member_email2" property = "member_email2"/>
+      <result column = "member_zipcode" property = "member_zipcode"/>
+      <result column = "member_address1" property = "member_address1"/>
+      <result column = "member_address2" property = "member_address2"/>
+      <result column = "member_regdate" property = "member_regdate"/>
+      <result column = "member_depositor" property = "member_depositor"/>
+      <result column = "member_bankname" property = "member_bankname"/>
+      <result column = "member_accountno" property = "member_accountno"/>
+      <result column = "isadmin" property = "isadmin"/>
+   </resultMap>
+   
+   <!-- 모든 회원 정보 검색 -->
+   <sql id = "member-select-all">
+      select * from smember
+   </sql>
+   
+   <sql id = "member-where-no">
+      where member_no = #member_no# 
+   </sql>
+   
+   <!-- 회원 정보를  member_no를 이용하여 정렬 -->
+   <select id="selectAllMember" resultMap = "memberRes">
+      <include refid="member-select-all"/>
+      where isadmin = 0
+      order by member_no desc
+   </select>
+   
+   <!-- 회원 아이디 중복확인 -->
+   <select id = "checkid" resultMap="memberRes" parameterClass = "String">
+      <include refid="member-select-all"/>         
+       where member_id = #member_id# 
+   </select>
+   
+   <select id = "selectOneMember" resultMap = "memberRes" parameterClass = "int">
+      <include refid="member-select-all"/>
+      <include refid="member-where-no"/>
+   </select>
+   
+   <!-- 회원 검색 -->
+   <select id = "selectSearchMember" resultMap = "memberRes" parameterClass = "java.util.Map">
+      <include refid="member-select-all"/>
+      where $searcht$ like '%'||'$searchk$'||'%'
+      order by member_no desc
+   </select>
+   
+   <!-- 아이디 찾기 -->
+   <select id = "findId" resultMap = "memberRes" parameterClass = "member">
+      <include refid="member-select-all"/>
+      where member_name = #member_name# and member_jumin1 = #member_jumin1# and member_jumin2 = #member_jumin2#
+   </select>
+   
+   <select id = "findrevId" resultMap = "memberRes" parameterClass = "member">
+	<include refid="member-select-all"/>
+	where member_id = #member_id#
+   </select>
+   
+   <!-- 비밀번호 찾기 -->
+   <select id = "findPw" resultMap = "memberRes" parameterClass = "member">
+      <include refid="member-select-all"/>
+      where member_id = #member_id# and member_jumin1 = #member_jumin1# and member_jumin2 = #member_jumin2#
+   </select>
+   
+   <!-- 로그인 (아이디에 해당하는 )-->
+   <select id = "login" resultMap = "memberRes" parameterClass = "String">
+      select member_passwd1 from smember where member_id = #member_id#
+   </select>
+   
+   <!-- 로그인 -->
+      <select id="searchpw" resultMap="memberRes" parameterClass="string">
+      select * from smember where member_id = #member_id#   
+      </select>
+   
+   <!-- 회원가입 -->
+   <insert id = "memberJoin" parameterClass = "member">
+      insert into smember (member_no, member_id, member_kakaoid, member_passwd1, member_passwd2, member_age, member_name, member_sex, member_jumin1, member_jumin2, member_phone, member_email1, member_email2, member_zipcode, member_address1, member_address2, member_regdate, member_depositor, member_bankname, member_accountno, isadmin)
+      values (smember_no_seq.nextval, #member_id#, #member_kakaoid#, #member_passwd1#, #member_passwd2#, #member_age#, #member_name#, #member_sex#, #member_jumin1#, #member_jumin2#, #member_phone#, #member_email1#, #member_email2#, #member_zipcode#, #member_address1#, #member_address2#, #member_regdate#, #member_depositor#, #member_bankname#, #member_accountno#, #isadmin#)
+   </insert>
+   
+   <!-- 회원 정보 수정 -->
+   <update id = "passUpdate" parameterClass = "member">
+      update smember set member_passwd1 = #member_passwd1#, member_passwd2 = #member_passwd2#
+      <include refid="member-where-no"/>
+   </update>
+   
+   <update id = "informUpdate" parameterClass = "member">
+      update smember set member_phone = #member_phone#, member_email1 = #member_email1#, member_email2 = #member_email2#, member_zipcode = #member_zipcode#, member_address1 = #member_address1#, member_address2 = #member_address2#
+  	   <include refid="member-where-no"/>
+   </update>
+   
+  <!--  <update id = "memberUpdate" parameterClass = "member">
+      update smember set member_passwd1 = #member_passwd1#, member_passwd2 = #member_passwd2#, member_phone = #member_phone#, member_email1 = #member_email1#, member_email2 = #member_email2#, member_zipcode = #member_zipcode#, member_address1 = #member_address1#, member_address2 = #member_address2#, member_depositor = #member_depositor#, member_bankname = #member_bankname#, member_accountno = #member_accountno#
+  	  where member_id = #member_id#
+   </update> -->
+   
+   <!-- 회원 탈퇴 -->
+   <delete id = "memberDelete" parameterClass = "member">
+      delete from smember
+      <include refid="member-where-no"/>
+   </delete>
+ 
+</sqlMap>

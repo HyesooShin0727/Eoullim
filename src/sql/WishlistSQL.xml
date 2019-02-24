@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="wishlist" type="user.wishlist.WishlistVO"/>
+	
+	<resultMap class="wishlist" id="wishlistRes">
+		<result column = "wish_no" property = "wish_no"/>
+		<result column = "wish_member_id" property = "wish_member_id"/>
+		<result column = "wish_goods_no" property = "wish_goods_no"/>
+		<result column = "wish_goods_color" property = "wish_goods_color"/>
+		<result column = "wish_goods_cnt" property = "wish_goods_cnt"/>
+	</resultMap>
+	<typeAlias alias="goods" type="admin.goods.GoodsVO" />
+
+	<resultMap class="goods" id="goodsRes">
+		<result column="goods_no" property="goods_no" />
+		<result column="goods_name" property="goods_name" />
+		<result column="goods_bname" property="goods_bname" />
+		<result column="goods_content" property="goods_content" />
+		<result column="goods_readcnt" property="goods_readcnt" />
+		<result column="goods_regdate" property="goods_regdate" />
+		<result column="goods_color" property="goods_color" />
+		<result column="goods_price" property="goods_price" />
+		<result column="goods_totalcnt" property="goods_totalcnt" />
+		<result column="goods_type1" property="goods_type1" />
+		<result column="goods_type2" property="goods_type2" />
+		<result column="goods_like" property="goods_like" />
+		<result column="goods_savname" property="goods_savname" />
+		<result column="goods_orgname" property="goods_orgname" />
+	</resultMap>
+	
+	<sql id = "wishlist-select-all">
+		select * from wishlist
+	</sql>
+	
+	<sql id = "wishlist-where-no">
+		where wish_no = #wish_no#
+	</sql>
+	
+	<select id = "wishlist-member" resultMap = "goodsRes" parameterClass = "String">
+		select goods_no,goods_name,goods_bname,goods_content,goods_readcnt,goods_regdate,goods_color,goods_price,goods_totalcnt,
+		goods_type1, goods_type2, goods_like, goods_savname, goods_orgname from sgoods,wishlist where goods_no = wish_goods_no and wish_member_id = #wish_member_id#
+	</select>
+	
+	<select id = "selectAllWish" resultMap = "wishlistRes" parameterClass = "String">
+		<include refid = "wishlist-select-all"/>
+		where wish_member_id = #wish_member_id#
+		order by wish_no desc
+	</select>
+	
+	<!-- 하나의 위시리스트 가져옴. -->
+	<select id="selectOneWishG" resultClass = "wishlist" parameterClass = "wishlist">
+		select * from WISHLIST where wish_goods_no = #wish_goods_no# and wish_member_id = #wish_member_id#
+	</select>
+	
+	<select id = "selectOneWish" resultMap = "wishlistRes" parameterClass = "int">
+		<include refid="wishlist-select-all"/>
+		where wish_no = #wish_no#
+	</select>
+	
+	<insert id = "insertWish" parameterClass = "wishlist">
+		insert into wishlist(wish_no, wish_member_id, wish_goods_no, wish_goods_color, wish_goods_cnt)
+		values (wish_no_seq.nextval, #wish_member_id#, #wish_goods_no#, #wish_goods_color#, #wish_goods_cnt#)
+	</insert>
+	
+	<update id = "updateWish" parameterClass = "wishlist">
+		update wishlist set wish_member_id = #wish_member_id#, wish_goods_no = #wish_goods_no#, wish_goods_cnt = #wish_goods_cnt#
+	</update>
+	
+	<delete id="deleteWish" parameterClass = "int">
+		delete from wishlist where wish_no = #wish_no#
+	</delete>
+</sqlMap>

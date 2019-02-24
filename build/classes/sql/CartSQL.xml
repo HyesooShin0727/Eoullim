@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+	<typeAlias alias="cart" type="user.cart.CartVO" />
+
+	<resultMap class="cart" id="cartRes">
+		<result column="cart_no" property="cart_no" />
+		<result column="cart_goods_no" property="cart_goods_no" />
+		<result column="cart_member_id" property="cart_member_id" />
+		<result column="cart_goods_color" property="cart_goods_color" />
+		<result column="cart_goods_cnt" property="cart_goods_cnt" />
+		<result column="cart_goods_img" property="cart_goods_img" />
+		<result column="cart_goods_name" property="cart_goods_name" />
+		<result column="cart_goods_price" property="cart_goods_price" />
+		<result column="cart_goods_total" property="cart_goods_total" />
+	</resultMap>
+	
+	<!-- 카트 인서트 -->
+	 <insert id="insertCart" parameterClass="cart">
+		insert into
+		cart(cart_no, cart_goods_no, cart_member_id, cart_goods_color, cart_goods_cnt, cart_goods_img, cart_goods_name, cart_goods_price)
+		values (cart_no_seq.nextval, #cart_goods_no#, #cart_member_id#, #cart_goods_color#, #cart_goods_cnt#, #cart_goods_img#, #cart_goods_name#, #cart_goods_price#)
+	</insert>
+	
+	<!-- cart_goods_total 값 업데이트. insert에서는 넣지 않기때문에 따로 update 해줘야함.  -->
+	<update id="updateTotal" parameterClass="cart">
+		UPDATE CART SET CART_GOODS_TOTAL = (CART_GOODS_PRICE * CART_GOODS_CNT) WHERE CART_GOODS_NO=#cart_goods_no#
+	</update>
+	
+	<update id="update-cart-price" parameterClass="cart"> UPDATE CART SET 
+		CART_GOODS_TOTAL = (CART_GOODS_PRICE * CART_GOODS_CNT) WHERE CART_GOODS_NO=#cart_goods_no# 
+	</update>
+	
+	<update id="updateCnt" parameterClass="cart">
+		UPDATE CART SET CART_GOODS_CNT = #cart_goods_cnt# WHERE cart_no = #cart_no#
+	</update>
+		
+
+	<sql id="cart-select-all">
+		SELECT * FROM CART
+	</sql>
+
+	<sql id="cart-where-no">
+		where cart_no = #cart_no#
+	</sql>
+
+	<select id="selectAllCart" resultMap="cartRes">
+		<include refid="cart-select-all" />
+		order by cart_no desc
+	</select>
+
+	<!-- 카트넘버에 해당하는 카트 하나 불러오기 -->
+	<select id="cart-select" resultClass="cart">
+		SELECT * FROM CART WHERE cart_no = #cart_no#
+	</select>
+	
+	<select id="cart-selectM" resultMap="cartRes">
+		SELECT * FROM CART where
+		cart_member_id= #cart_member_id#
+		ORDER BY
+		cart_no DESC
+	</select>
+
+	<!-- 상품가격구하기 띠 -->
+	<select id="select-goods-price" resultClass="int" parameterClass="int">
+		SELECT GOODS_PRICE FROM SGOODS,CART WHERE GOODS_NO = CART_GOODS_NO AND
+		CART_GOODS_NO = #CART_GOODS_NO#
+	</select>
+
+	<!-- 여기 MEMID 나중에 바꿔줘야함 -->
+	<!-- 한 종류의 상품에 대해서 ( 장바구니에 담은 개수 * 상품의 가격 ) 값 리턴해줌. -->
+	<select id="cart-pay" resultClass="int" parameterClass="int">
+		SELECT
+		(GOODS_PRICE * CART_GOODS_CNT) FROM SGOODS,CART WHERE GOODS_NO =
+		CART_GOODS_NO AND CART_MEMBER_ID=#cart_member_id# AND CART_GOODS_NO =
+		#CART_GOODS_NO#
+	</select>
+
+	<!--장바구니 전체 가격 구하는 쿼리문 -->
+	<select id="cart-paytotal" resultClass="int">
+		SELECT SUM (GOODS_PRICE *
+		CART_GOODS_CNT) FROM SGOODS,CART WHERE CART_GOODS_NO=GOODS_NO AND
+		CART_MEMBER_ID=#cart_member_id#
+	</select>
+	
+	<delete id="delete-cart" parameterClass="int">
+		delete from cart where cart_no = #cart_no#
+	</delete>
+
+
+</sqlMap>
+	

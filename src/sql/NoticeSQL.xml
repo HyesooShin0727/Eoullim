@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="notice" type="admin.notice.NoticeVO"/>
+	
+	<resultMap class = "notice" id = "noticeRes">
+		<result column = "notice_no" property = "notice_no"/>
+		<result column = "notice_id" property = "notice_id"/>
+		<result column = "notice_sub" property = "notice_sub"/>
+		<result column = "notice_content" property = "notice_content"/>
+		<result column = "notice_regdate" property = "notice_regdate"/>
+	</resultMap>
+	
+	<sql id = "notice-select-all"> 
+		select * from notice
+	</sql>
+	
+	<sql id = "notice-where-no">
+		where notice_no = #notice_no#
+	</sql>
+	
+	<!-- 공지사항 notice_no를 이용하여 정렬 -->
+	<select id = "selectAllNotice" resultMap = "noticeRes">
+		<include refid="notice-select-all"/>
+		order by notice_no desc
+	</select>
+	
+	<select id = "selectOneNotice" resultMap = "noticeRes" parameterClass = "int">
+		<include refid="notice-select-all"/>
+		<include refid="notice-where-no"/>
+	</select>
+	
+	<select id = "selectLastNoNotice" resultMap = "noticeRes">
+		select max(notice_no) as notice_no from notice
+	</select>
+	
+	<!-- 공지 검색(제목,내용) -->
+	<select id = "selectSearchNotice" resultMap = "noticeRes" parameterClass = "java.util.Map">
+		<include refid="notice-select-all"/>
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by notice_no desc
+	</select>
+	
+	<!-- 공지사항 작성 -->
+	<insert id= "insertNotice" parameterClass = "notice">
+		insert into notice (notice_no, notice_id, notice_sub, notice_content, notice_regdate)
+		values (notice_no_seq.nextval, #notice_id#, #notice_sub#, #notice_content#, #notice_regdate#)
+	</insert>
+	
+	<!-- 공지사항 수정 -->
+	<update id = "updateNotice" parameterClass = "notice">
+		update notice set notice_sub = #notice_sub#, notice_content = #notice_content#
+		<include refid="notice-where-no"/>
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id = "deleteNotice" parameterClass = "notice">
+		delete from notice
+		<include refid="notice-where-no"/>
+	</delete>
+</sqlMap>

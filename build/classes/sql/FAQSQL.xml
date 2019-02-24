@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="faq" type="admin.faq.FAQVO"/>
+	
+	<resultMap class = "faq" id = "faqRes">
+		<result column = "faq_no" property = "faq_no"/>
+		<result column = "faq_sub" property = "faq_sub"/>
+		<result column = "faq_content" property = "faq_content"/>
+		<result column = "faq_type" property = "faq_type"/>
+		<result column = "faq_regdate" property = "faq_regdate"/>
+	</resultMap>
+	
+	<sql id = "faq-select-all">
+		select * from faq
+	</sql>
+	
+	<sql id = "faq-where-no">
+		where faq_no = #faq_no#
+	</sql>
+	
+	<select id = "selectAllFaq" resultMap = "faqRes">
+		<include refid="faq-select-all"/>
+		order by faq_no desc
+	</select>
+	
+	<select id = "selectTypeFaq" resultMap = "faqRes" parameterClass = "String">
+		<include refid="faq-select-all"/>
+		where faq_type = #faq_type#
+		order by faq_no desc
+	</select>
+	
+	<select id="selectOneFaq" resultMap = "faqRes" parameterClass = "int">
+		<include refid="faq-select-all"/>
+		<include refid="faq-where-no"/>
+	</select>
+	
+	<select id = "selectLastNoFaq" resultMap = "faqRes">
+		select max(faq_no) as faq_no from faq
+	</select>
+	
+	<insert id = "insertFaq" parameterClass = "faq">
+		insert into faq (faq_no, faq_sub, faq_content, faq_type, faq_regdate)
+		values (faq_no_seq.nextval, #faq_sub#, #faq_content#, #faq_type#, #faq_regdate#)
+	</insert>
+	
+	<update id = "updateFaq" parameterClass = "faq">
+		update faq set faq_sub = #faq_sub#, faq_content = #faq_content#, faq_type = #faq_type#
+		<include refid="faq-where-no"/>
+	</update>
+	
+	<delete id = "deleteFaq" parameterClass = "faq">
+		delete from faq
+		<include refid="faq-where-no"/>
+	</delete>
+	
+	
+</sqlMap>

@@ -1,0 +1,1360 @@
+.order_wrap{
+	margin:55px 0 0;
+	}
+.order_wrap div {
+	    font-family: 'NanumSquareR';
+}
+.order_wrap .title_style1{margin-bottom: 45px;}
+/* info_list */
+.order_wrap .info_list{margin-bottom: 60px;	}
+
+.info_list li .cart{background:url(/Eoullim/Resource/images/sub/ico_cart.png) no-repeat 50% 30px;}
+.info_list li .wish{background:url(/Eoullim/Resource/images/sub/ico_wish.png) no-repeat 50% 30px;}
+.info_list li .today{background:url(/Eoullim/Resource/images/sub/ico_today.png) no-repeat 50% 30px;}
+.info_list li .coupon{background:url(/Eoullim/Resource/images/sub/ico_coupon.png) no-repeat 50% 30px;}
+.info_list li .point{background:url(/Eoullim/Resource/images/sub/ico_point.png) no-repeat 50% 30px;}
+
+.info_list li a div{
+	position: absolute;
+	top: 25px;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	margin-left:5px;
+	color: rgb(255,255,255);
+	background: url(/Eoullim/Resource/images/sub/bg_circle2.png) no-repeat 0 0;
+	text-align: center;
+	line-height: 19px;
+}
+
+.info_list li:hover .cart, .info_list li.on .cart{background:url(/Eoullim/Resource/images/sub/ico_cart_on.png) no-repeat 50% 30px;}
+.info_list li:hover .wish, .info_list li.on .wish{background:url(/Eoullim/Resource/images/sub/ico_wish_on.png) no-repeat 50% 30px;}
+.info_list li:hover .today, .info_list li.on .today{background:url(/Eoullim/Resource/images/sub/ico_today_on.png) no-repeat 50% 30px;}
+.info_list li:hover .coupon, .info_list li.on .coupon{background:url(/Eoullim/Resource/images/sub/ico_coupon_on.png) no-repeat 50% 30px;}
+.info_list li:hover .point, .info_list li.on .point{background:url(/Eoullim/Resource/images/sub/ico_point_on.png) no-repeat 50% 30px;}
+
+.info_list li:hover a div,
+.info_list li.on a div{
+	background: url(/Eoullim/Resource/images/sub/bg_circle2_on.png) no-repeat 0 0;
+}
+
+
+/* cart */
+.order_wrap .cart_title{
+	text-align: center;
+	font-size: 26px;
+	font-weight: normal;
+	color: rgb(0,79,51);
+}
+.order_wrap .cart_check{
+	overflow: hidden;
+	margin-bottom: 20px;
+	line-height: 25px;
+    font-family: 'NanumSquareR';
+}
+.order_wrap .cart_check .label_style{
+	padding-left: 25px;
+	margin-right: 20px;
+	font-size: 13px;
+}
+.lt-ie9 .order_wrap .cart_check .label_style{padding-left: 0}
+.order_wrap .cart_check a{
+	display: inline-block;
+	padding: 0 8px;
+	line-height: 23px;
+	vertical-align: middle
+}
+.ie7 .order_wrap .btn_box1{width:162px}
+.order_wrap .btn_box1 a{margin-left: 10px;}
+.order_wrap .btn_box1 a:first-child{margin-left: 0px;}
+
+.cart_txt1{
+	padding: 15px 0 30px;
+	font-size: 14px;
+	font-family: 'NanumSquareR';
+}
+.price_box{
+	overflow: hidden;
+	padding: 40px 100px 40px 40px;
+	border:6px solid rgb(232,232,232);
+}
+.price_box dl{
+	float:left;
+	padding-left: 70px;
+	display:inline-block;
+	color: rgb(51,51,51)
+}
+.price_box dl:first-child{padding-left: 0;}
+.price_box .sale{
+	margin-left: 95px;
+	background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+}
+.price_box .empoint{
+	margin-left: 95px;
+	background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+}
+.price_box .delivery{
+	margin-left: 95px;
+	background: url(/Eoullim/Resource/images/sub/cart_plus.png) no-repeat 0 50%;
+}
+.price_box dt{
+	margin-bottom: 5px;
+	font-family: 'NanumSquareR';
+	font-size: 16px;
+}
+.price_box .total dt{color:rgb(12,31,52);}
+.price_box dd{
+	font-family: 'NanumSquareR';
+	font-size: 30px;
+	line-height: 32px;
+}
+.price_box .total{
+	float:right;
+	background: url(/Eoullim/Resource/images/sub/cart_total.png) no-repeat 0 50%;
+}
+.price_box .total dd{
+    font-family: 'NanumSquareB';
+	color:rgb(0,76,51);
+}
+
+.order_wrap .btn_box5{
+	margin: 50px 0 75px;
+	clear:both;
+	text-align: center;
+}
+.order_wrap .btn_box5 a{
+	display: inline-block;
+	width: 160px;
+	margin-right: 5px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-family: 'NanumSquareR';
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+.order_wrap .btn_box5 .btn_style6{
+	margin-right: 0px;
+	padding: 15px 0 16px
+}
+
+/* related_area */
+.related_area .product_list li{width:24.89%;}
+.related_area .product_list li.last,
+.related_area .product_list li:last,
+.related_area .product_list li:nth-of-type(4){border: none}
+
+/* check_out */
+.order_wrap .btn_order_modify{
+	display: inline-block;
+	margin-left: 20px;
+	height: 23px;
+	padding: 0 5px;
+	line-height: 23px;
+}
+.order_wrap .btn_box4{
+	margin-top: 40px;
+	clear:both;
+	text-align: center;
+}
+.order_wrap .btn_box4 a{
+	display: inline-block;
+	width: 160px;
+	margin-right: 5px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-family: 'NanumSquareR';
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+.reserve_area{
+	margin-bottom: 40px;
+	padding: 30px 40px 0;
+	border-top: 1px solid rgb(238,238,238);
+	border-bottom: 1px solid rgb(238,238,238);
+	background: rgb(250,250,250);
+}
+.ie7 .reserve_area{padding: 30px 40px;}
+.reserve_area dl{
+	overflow: hidden;
+	margin-bottom: 30px;
+	font-size: 14px;
+	font-family: 'NanumSquareR';
+	line-height: 30px;
+	color: rgb(51,51,51)
+}
+.reserve_area dl.total{
+	padding-top: 30px;
+	border-top: 1px solid rgb(204,204,204);
+}
+.reserve_area dt{
+	display: block;
+	float: left;
+	width: 140px;
+	text-align: right;
+}
+.reserve_area dd{
+	display:block;
+	float: left;
+	margin-left: 30px;
+}
+.reserve_area dd input[type=text]{
+	width: 140px;
+	height: 28px;
+	padding-right: 10px;
+	border: 1px solid rgb(204,204,204);
+	background: rgb(255,255,255);
+	text-align: right;
+}
+.reserve_area .user_reserve{
+	display: inline-block;
+	text-align: right;
+	width: 100px;
+}
+.reserve_area .check_box{display:inline-block; margin-left: 20px;}
+
+.order_wrap .order_title{
+	font-size: 20px;
+	font-family: 'NanumSquareR';
+	font-weight: normal;
+	color: rgb(51,51,51);
+	display:inline-block;
+}
+.lt-ie9 .order_wrap .order_title{display: inline}
+.order_wrap .title_area{overflow: hidden; font-family: 'NanumSquareR';}
+.order_wrap .title_area > h3{display: inline-block;}
+.order_wrap .order_check{
+	display:inline-block;
+	margin-left:20px;
+	line-height: 25px;
+	vertical-align: top;
+}
+.order_wrap .order_check .label_style{padding-left:30px}
+.lt-ie9 .order_wrap .order_check .label_style{padding-left:0}
+.gift_area{margin:15px 0 55px;}
+.gift_area ul{overflow:hidden}
+.gift_area li{
+	float:left;
+	width: 19.89%;
+	padding: 35px 0 20px;
+	text-align: center;
+}
+.gift_area li img{width:188px;  max-width: 188px;}
+.gift_area li label{
+	display:block;
+	overflow:hidden;
+	height: 55px;
+	font-size: 14px;
+	font-family: 'NanumSquareR';
+	color: rgb(51,51,51);
+	line-height: 24px
+}
+.gift_area li label span{color: rgb(51,51,51)}
+.gift_area li input{width:15px; height: 15px}
+
+.payway{margin-top: 15px; padding: 15px 0}
+.payway span{display:inline-block; margin-right: 30px; line-height: 35px;}
+.payway input{width: 15px; height: 15px; vertical-align:middle}
+.payway label{
+	display:inline-block;
+	margin-left:10px;
+	font-size:14px;
+	font-family: 'NanumSquareR';
+	color: rgb(51,51,51);
+	vertical-align:middle
+}
+.pay_info.nonmember{
+	margin-bottom:40px;
+	border-bottom: 1px solid rgb(238,238,238);
+}
+
+.nonmember_info{
+	margin-bottom: 60px;
+	font-family: 'NanumSquareR';
+	background: rgb(251,251,251);
+	padding: 50px 50px 45px;
+}
+.nonmember_info ul{font-size:14px;}
+.pay_info{
+	padding: 25px 0;
+	font-size:14px;
+	font-family: 'NanumSquareR';
+}
+.pay_info p{
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+.nonmember_info p{
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-family: 'NanumSquareR';
+}
+.nonmember_info li,
+.pay_info li{
+	color: rgb(51,51,51);
+	line-height: 30px;
+}
+.order_wrap .nonmember_info li span,
+.order_wrap .pay_info li span{color:rgb(51,51,51); font-family: 'NanumSquareR';}
+.nonmember_info .order_check{
+	margin-left:0px;
+	font-size:14px;
+}
+.nonmember_info ul{
+	margin-bottom:20px;
+}
+
+/* popup order*/
+.order_popup{
+	position: relative;
+	top: 0;
+	width: 1000px;
+	padding: 40px 20px 50px;
+	margin-top: 50px;
+	background: rgb(255,255,255)
+}
+.order_popup .popup_title{
+	margin-bottom: 15px;
+	font-size: 18px;
+	line-height: 25px;
+	font-family: 'NanumSquareR';
+	font-weight: normal;
+	color: rgb(51,51,51);
+	display:inline-block;
+}
+.lt-ie9 .order_popup .popup_title{display: inline}
+.order_popup .btn_use{
+	margin: 30px 0 65px;
+	text-align:center;
+}
+.order_popup .btn_use a{
+	display: inline-block;
+	width: 180px;
+	height: 40px;
+	font-size: 14px;
+	line-height: 40px;
+}
+.order_popup .close{
+	position: absolute;
+	top: -50px;
+	right: 0;
+}
+.order_popup .close button{padding: 0}
+/*梨숈쭥姨뚯콠吏�夷띿콡�깙�삩梨숋옙�뀣�뫂占쏀샍占쏙옙 梨좏씤�샄梨숋옙遺댐옙占�*/
+.orderer_popup{
+	position: relative;
+	top: 0;
+	width: 450px;
+	padding: 35px 20px 50px;
+	background: rgb(255,255,255)
+}
+.orderer_popup .popup_title{
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-family: 'NanumSquareR';
+	color: rgb(51,51,51);
+	display:inline-block;
+}
+.orderer_popup .btn_use{
+	margin: 30px 0 65px;
+	text-align:center;
+}
+.orderer_popup .btn_use a{
+	display: inline-block;
+	width: 180px;
+	height: 40px;
+	font-size: 14px;
+	line-height: 40px;
+}
+.orderer_popup .close button{
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	padding: 0
+}
+.orderer_popup table{
+	width:100%;
+	border-top: 1px solid rgb(238,238,238);
+	border-bottom: 1px solid rgb(238,238,238);
+	font-family: 'NanumSquareR';
+}
+.orderer_popup .popup_table2 td select{
+	padding-left:10px;
+	height: 28px;
+	border:1px solid rgb(204,204,204);
+	background: rgb(238,238,238);
+	box-sizing:border-box
+}
+.orderer_popup .popup_table2{margin-bottom: 40px }
+.orderer_popup .popup_table2 th{
+	width: 95px;
+	color: rgb(51,51,51);
+	text-align:left;
+	font-size: 14px;
+}
+.orderer_popup .popup_table2 td{
+	padding: 30px 0;
+}
+.orderer_popup .popup_table2 td input[type=text],
+.orderer_popup .popup_table2 td select{
+	padding-left:10px;
+	height: 28px;
+	border:1px solid rgb(204,204,204);
+	background: rgb(238,238,238);
+	box-sizing:border-box
+}
+.orderer_popup .txt{
+	padding:20px 0;
+	border-top:1px solid rgb(0,0,0);
+	font-size: 14px;
+	font-family: 'NanumSquareR';
+	line-height:30px;
+}
+.orderer_popup .btn_box1 a{
+	width:160px;
+	margin:0 auto;
+	display:block;
+	text-align:center;
+	padding:10px 0;
+}
+.orderer_popup .popup_table2 .input_size1{
+	width:260px;
+}
+
+
+
+/* 梨숈찓�샍梨좏삨吏� 梨좏씤�샄梨숋옙遺댐옙占� 梨좑옙�뵔裕쇽옙�샄夷덉콠夷랃옙占� , 梨섏㎏吏몄콡占쎌죾�돟占쎌쭥姨뚯콡占쎌줂裕쇈긾�돞占� 梨좑옙�뵔裕쇽옙�샄夷덉콠夷랃옙占� */
+.order_popup table{
+	width:100%;
+	border-top: 2px solid rgb(0,76,51);
+	border-bottom: 1px solid rgb(238,238,238);
+	font-family: 'NanumSquareR';
+}
+.order_popup .coupon_table_area{margin-bottom:35px; height: 210px; overflow-y:scroll}
+.order_popup .popup_table1 th{
+	padding:15px 0 13px;
+	background: rgb(250,250,250);
+	font-size: 14px;
+	font-weight: normal;
+}
+.order_popup .popup_table1 td{
+	padding: 25px 0;
+	border-top: 1px solid rgb(232,232,232);
+	line-height: 18px;
+	text-align:center;
+	font-size: 14px;
+}
+.order_popup .popup_table1 td .name{padding-left:20px; text-align:left}
+.order_popup .popup_table1 .select_area{width: 19%}
+.order_popup .popup_table1 td select{
+	width: 95%;
+	height: 30px;
+	padding-left:10px;
+	border:1px solid rgb(204,204,204);
+	font-size:13px;
+	background: rgb(238,238,238)
+}
+.order_popup .popup_m_table1{display:none}
+.order_popup .addr_area{
+	overflow:hidden;
+	margin: 15px 0 45px;
+	font-family: 'NanumSquareR';
+}
+.order_popup .addr_area .txt{
+	color: rgb(51,51,51);
+	font-size: 14px;
+	line-height: 24px;
+}
+.order_popup .addr_area .btn_add{
+	float:right;
+}
+.order_popup .addr_area .btn_add a{
+	display:inline-block;
+	width: 100px;
+	padding: 6px 0 7px;
+	text-align:center
+}
+.order_popup .btn_box1{text-align:center; font-size: 0;}
+.order_popup .btn_box1 a{
+	display:inline-block;
+	width: 180px;
+	font-size: 16px;
+	margin-right:5px;
+	height: 40px;
+	line-height: 38px;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+/* .order_popup .btn_box1 .btn_style6{padding: 4px 0 5px;margin:10px 0 0 0} */
+.order_popup .btn_add{
+	display:inline-block;
+	border:1px solid rgb(0,76,51);
+	width:85px;
+	height:25px;
+	text-align:center;
+	line-height:25px;
+	margin-left:10px;
+	vertical-align: top
+}
+.order_popup .btn_add a{
+	font-family: 'NanumSquareR';
+	font-size:14px;
+	color:rgb(0,76,51);
+}
+
+/*梨섏㎏吏몄콡占쎌죾�돟占쎌쭬占쎄텢 梨숈쮮占쎌뵵�걿寃멸텢 梨좑옙�뵔裕쇽옙�샄夷덉콠夷랃옙占� */
+.order_popup .mr{margin-right:8px;}
+.order_popup .ml{margin-left:10px;}
+.order_popup .popup_table2{margin-bottom: 40px }
+.order_popup .popup_table2 th{
+	width: 95px;
+	color: rgb(51,51,51);
+	border-bottom: 1px solid rgb(238,238,238);
+	text-align:left;
+	font-weight: normal;
+	font-size: 14px;
+}
+.order_popup .popup_table2 td{
+	padding: 30px 0;
+	border-bottom: 1px solid rgb(238,238,238)
+}
+.order_popup .popup_table2 td input[type=text],
+.order_popup .popup_table2 td select{
+	padding-left:10px;
+	height: 28px;
+	border:1px solid rgb(204,204,204);
+	background: rgb(238,238,238);
+	box-sizing:border-box
+}
+.order_popup .popup_table2 td .check_box{display:inline-block; margin-left:20px;}
+.order_popup .popup_table2 td input[type=checkbox]{
+	position:absolute;
+	left: -1000px;
+	z-index: -1000;
+}
+.order_popup .popup_table2 td input[type=checkbox] + label{
+	display: inline-block;
+	padding-left: 30px;
+	line-height: 20px;
+	background: url(/Eoullim/Resource/images/sub/bg_check1.gif) no-repeat 0;
+}
+.order_popup .popup_table2 .input_size1{width: 250px}
+.order_popup .popup_table2 .input_size2{width: 60px}
+.order_popup .popup_table2 .input_size3{width: 110px}
+.order_popup .popup_table2 .input_size4{width: 100%; max-width: 540px;}
+.order_popup .popup_table2 .select_size1{width: 80px}
+
+.order_popup .popup_table2 .btn_style2{
+	display: inline-block;
+	width: 150px;
+	padding: 6px 0;
+	text-align:center;
+}
+.order_popup .popup_table2 .addr_box input{margin-top: 10px;}
+.addr .mtb {
+	margin:10px 0;
+}
+
+/*梨쀬㏈吏몄콡�샍�씥 梨좏깘占쎌뫂占쏀샄夷덉콡吏좑옙沅� */
+.order_txt1{
+	padding: 25px 0;
+	border-bottom: 1px solid rgb(238,238,238);
+	font-family: 'NanumSquareR';
+	line-height: 24px;
+}
+.order_txt1 > strong{
+	font-family: 'NanumSquareR';
+	font-size: 16px;
+	font-weight: normal;
+}
+.order_txt1 li{
+	font-size: 14px;
+	color:rgb(51,51,51);
+}
+/* 梨숈쭥姨뚯콠吏�夷띿콡占쎄퐪占쎌솙�긾竊ο옙 梨좏깘占쎌뫂占쏀샄夷덉콡吏좑옙沅� */
+.complete_txt{
+	padding: 35px 0;
+	text-align: center;
+	background: rgb(250,250,250);
+}
+.complete_txt .txt1{
+	font-family: 'NanumSquareR';
+	font-size: 22px;
+	line-height: 28px;
+}
+.complete_txt .txt2{
+	font-family: 'NanumSquareR';
+	font-size: 14px;
+	margin-top: 15px;
+	line-height: 22px;
+	color: rgb(114,114,114)
+}
+.complete_txt .txt2 strong{text-decoration: underline}
+
+/*mypage*/
+.mypage_wrap{
+	max-width:1200px;
+}
+.mypage_lnb_wrap{
+	width:150px;
+	float:left;
+}
+.mypage_lnb_wrap >li a{
+	color : rgb(51,51,51);
+}
+.mypage_list_wrap{
+	width: 900px;
+	float:right;
+}
+
+.order_step{
+	overflow: hidden;
+	width: 100%;
+	margin: 15px 0 40px;
+	background: rgb(51,51,51)
+}
+.order_step li{
+	float: left;
+	width:24.85%;
+	padding: 25px 0 25px 0;
+	color: rgb(255,255,255);
+	background: url(/Eoullim/Resource/images/sub/bg_list_bar02.gif) no-repeat 0 50%;
+}
+.order_step li:first-child{background:none}
+.order_step li .txt{
+	float: left;
+	margin-left:30px;
+	font-family: 'NanumSquareR';
+}
+.order_step li .txt dt{font-size: 16px;}
+.order_step li .txt dd{margin-top: 10px; color: rgb(204,204,204); line-height: 18px}
+.order_step li .count{
+	float: right;
+	margin-right: 30px;
+	font-size: 4.333em;
+    font-family: 'FuturaBT-Medium';
+	line-height:52px;
+}
+.order_step li.on .count{color: rgb(185,141,96)}
+.order_wrap .title_area a{
+	display:inline-block;
+	text-align: center;
+}
+.order_wrap .title_area .btn_modify{
+	width: 150px;
+	padding: 4px 0 5px;
+	margin-left: 40px;
+}
+.order_wrap .my_info_table{margin: 10px 0 20px;}
+
+/* 梨숈쭥姨뚯콠吏�夷�/梨섏㎏吏몄콡占쎌죾�돟占쎌쭠吏몄콬�걚�씤 */
+.srh_result{
+	margin: 75px 0 35px;
+	font-family: 'NanumSquareR';
+	font-size: 14px;
+	line-height: 24px;
+	color: rgb(51,51,51);
+	text-align: center;
+}
+.srh_result strong{display:block; margin-bottom: 5px; font-size: 1.286em; color: rgb(51,51,51)}
+.srh_result span{color: rgb(0,0,0)}
+
+.return_area{
+	overflow:hidden;
+	margin: 100px 0 40px;
+	font-family: 'NanumSquareR';
+	background: rgb(246,246,246)
+}
+.return_area li{
+	float:left;
+	width: 33.2%;
+	padding: 30px 0 0 30px;
+	height: 413px;
+	border-left:1px solid rgb(255,255,255);
+	box-sizing: border-box;
+}
+.ie8 .return_area li{width:30.6%;}
+.return_area li:first-child{border:none}
+.return_area li h3{margin-bottom:20px;font-size: 1.833em; color: rgb(51,51,51)}
+.return_area li .return_txt{font-size: 14px; line-height: 26px; color: rgb(51,51,51)}
+.return_area li .return_txt dt{color: rgb(0,0,0)}
+
+.order_wrap .title_area .btn_box1 a{
+	padding: 2px 8px;
+	text-align: center;
+}
+
+/* 梨숈쭠吏몄콬�걚�씤 */
+.order_search{position: relative; top:0; margin: 35px 0 70px; padding-right: 160px; font-family: 'NanumSquareR';}
+.order_search .title{
+	display:block;
+	float: left;
+	width: 120px;
+	padding-top: 10px;
+	font-size: 14px;
+	color: rgb(51,51,51)
+}
+.order_search .date_slc{overflow: hidden;}
+.order_search .date_slc > ul{float: left; width: 594px; overflow:hidden; zoom:1;}
+.order_search .date_slc > ul li{
+	float: left;
+	width:16.45%;
+	border: 1px solid rgb(204,204,204);
+	border-left: none;
+	text-align: center;
+}
+.order_search .date_slc > ul li:first-child{border-left: 1px solid rgb(204,204,204)}
+.order_search .date_slc > ul li.last{padding: 10px 0 11px; color: rgb(255,255,255); background: rgb(102,102,102);}
+.order_search .date_slc > ul li a{
+	display: block;
+	padding: 10px 0 11px;
+	color: rgb(51,51,51)
+}
+.order_search .date_slc > ul li a:hover,
+.order_search .date_slc > ul li .on{
+	background: rgb(102,102,102);
+	color: rgb(255,255,255)
+}
+.order_search .date_slc .calendar{float:right;}
+.order_search .date_slc .calendar .input{width: 78px; height:38px; padding: 0 10px; border:1px solid rgb(204,204,204); border-right: none; line-height: 38px; color: rgb(51,51,51); background: rgb(238,238,238); vertical-align: middle;}
+.order_search .date_slc .calendar .ui-datepicker-trigger{border:1px solid rgb(204,204,204); vertical-align: middle;}
+.order_search .srh_area{overflow: hidden; margin: 15px 0 0}
+.order_search .srh_area .select{width: 180px; height: 40px; padding: 0 0 0 10px; line-height: 40px; border: 1px solid rgb(204,204,204); font-family: 'NanumSquareR'; background: rgb(238,238,238)}
+.order_search .srh_area .input{float:right; width: 710px; height: 38px; padding: 0 0 0 10px; line-height: 38px; border: 1px solid rgb(204,204,204); background: rgb(238,238,238)}
+.ie7 .order_search .srh_area .input{float: none;  margin-left: 10px}
+.order_search .srh_area .btn_search{
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 140px;
+	height: 95px;
+	border:none;
+	border-radius: 0;
+	font-size: 16px;
+	font-family: 'NanumSquareR';
+	text-align:center;
+	color: rgb(255,255,255);
+	background: rgb(102,102,102);
+	line-height: normal;
+	-webkit-appearance:button;
+	cursor:pointer;
+}
+
+/* 梨섏㎏占쎌뫂占쏙옙�뇺�뀓�占쎈�ㅼ죿占쎌㏈吏� */
+.refund_area{margin-bottom: 80px;}
+.refund_area .refund_title{
+	margin: 35px 0 15px;
+	font-size: 18px;
+	font-family: 'NanumSquareR';
+	padding-left: 22px;
+	background: url(/Eoullim/Resource/images/sub/bg_special_char1.gif) no-repeat 0 7px;
+}
+.refund_area .refund_select{float: left; width:17%; margin-right: 1%;}
+.refund_area .refund_input{
+	width: 80%;
+	height: 28px;
+	padding: 0 5px 0;
+	border: 1px solid rgb(231,231,231);
+	font-size: 14px;
+	color: rgb(51,51,51);
+}
+
+/*order 梨숉샍�삏梨섏쭩姨띿콟夷랃옙占� 梨쀬쮬吏�梨섏쭬吏� */
+.point_box {
+    background: rgb(232,232,232);
+    padding: 15px 20px;
+	margin-bottom: 50px;
+    font-family: 'NanumSquareR';
+    font-weight: 400;
+    color: rgb(51,51,51);
+	font-size:14px;
+}
+.point_box > ul > li {
+	position: relative;
+	margin-bottom: 10px;
+}
+.point_box > ul > li:last-child {
+	margin-bottom: 0;
+}
+.point_box .title {
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 110px;
+    display: inline-block;
+}
+.point_box .input {
+    width: 55px;
+    padding: 0 10px 0 5px;
+    height: 28px;
+    vertical-align: middle;
+    border: 1px solid rgb(204,204,204);
+    text-align: right;
+}
+.point_box .check{
+	margin-left: 10px;
+	font-size:12px;
+}
+.vam {
+    vertical-align: middle !important;
+}
+.point_box .usable strong {
+    display: inline-block;
+    --width: 55px;
+	padding: 0 1px;
+    text-align: right;
+} /* doa */
+.price_box.pay_price_box{
+	margin-bottom: 50px;
+	padding: 40px;
+}
+.price_box.pay_price_box dt{margin-bottom: 15px;}
+.price_box.pay_price_box .sale{margin-left: 40px;}
+.price_box .point {
+    margin-left: 40px;
+    background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+}
+.price_box.pay_price_box .delivery {margin-left: 40px;}
+
+/*.point_box .mileage {float: right;margin-top: 8px;}  doa */
+
+.order_wrap .mileage {background-color:#006b46;color: #fff;font-size: 16px;padding: 15px 20px;margin-bottom: 50px;}  /* doa */
+
+
+/* 梨섑삦吏몄콡�엹吏싳콬�삏吏�梨좑옙誘좑옙占� 梨숉샍占쎌솙占쏀걚吏� */
+@media screen and (min-width:1200px) {
+
+}
+
+/*梨좑옙裕얜껌�긾硫ㅿ옙�뵵�긾�뵎占� & 梨섏㎣吏�梨섏㎏占쎌뵵占쏀샄姨�*/
+@media screen and (max-width:1199px) {
+
+	/*info_list*/
+	.info_list li a div{
+		background: url(/Eoullim/Resource/images/sub/bg_circle2_m.png) no-repeat 0 0;
+		background-size: 20px;
+	}
+	.info_list li .cart{background:url(/Eoullim/Resource/images/sub/ico_cart_m.png) no-repeat 50% 30px; background-size: 31px 28px}
+	.info_list li .wish{background:url(/Eoullim/Resource/images/sub/ico_wish_m.png) no-repeat 50% 30px; background-size: 27px 25px}
+	.info_list li .today{background:url(/Eoullim/Resource/images/sub/ico_today_m.png) no-repeat 50% 30px; background-size:30px 30px}
+	.info_list li .coupon{background:url(/Eoullim/Resource/images/sub/ico_coupon_m.png) no-repeat 50% 30px; background-size: 36px 22px}
+	.info_list li .point{background:url(/Eoullim/Resource/images/sub/ico_point_m.png) no-repeat 50% 30px; background-size: 30px 30px}
+
+	.info_list li:hover .cart, .info_list li.on .cart{background:url(/Eoullim/Resource/images/sub/ico_cart_m_on.png) no-repeat 50% 30px; background-size: 31px 28px}
+	.info_list li:hover .wish, .info_list li.on .wish{background:url(/Eoullim/Resource/images/sub/ico_wish_m_on.png) no-repeat 50% 30px; background-size: 27px 25px}
+	.info_list li:hover .today, .info_list li.on .today{background:url(/Eoullim/Resource/images/sub/ico_today_m_on.png) no-repeat 50% 30px; background-size: 30px 30px}
+	.info_list li:hover .coupon, .info_list li.on .coupon{background:url(/Eoullim/Resource/images/sub/ico_coupon_m_on.png) no-repeat 50% 30px; background-size: 36px 22px}
+	.info_list li:hover .point, .info_list li.on .point{background:url(/Eoullim/Resource/images/sub/ico_point_m_on.png) no-repeat 50% 30px; background-size: 30px 30px}
+
+	.info_list li:hover a div,
+	.info_list li.on a div{
+		background: url(/Eoullim/Resource/images/sub/bg_circle2_m_on.png) no-repeat 0 0;
+		background-size: 20px;
+	}
+	.order_wrap .cart_title{
+		font-size: 20px;
+		margin-bottom: 25px;
+	}
+	/* price_box */
+	.price_box{padding: 30px 0px 30px 10px;}
+	.price_box dl{
+		float: none;
+		padding-left: 50px;
+		margin-top: 20px;
+		display:block;
+	}
+	.price_box dl:first-child{
+		padding-left: 50px;
+		margin-top: 0;
+	}
+	.price_box .sale{
+		margin-left: 0;
+		background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+		background-size: 30px;
+	}
+	.price_box .delivery{
+		margin-left: 0;
+		background: url(/Eoullim/Resource/images/sub/cart_plus.png) no-repeat 0 50%;
+		background-size: 30px
+	}
+	.price_box dt{font-size: 14px;}
+	.price_box .total{
+		float: none;
+		background: url(/Eoullim/Resource/images/sub/cart_total.png) no-repeat 0;
+		background-size: 30px
+	}
+	/*2016-09-19 梨숉샍�삏梨섏쭩姨띿콟夷랃옙占� 梨쀬쮬吏�梨섏쭬吏� 梨숈쮮占쎌뵵�걿寃멸텢 */
+	.price_box.pay_price_box{
+		padding: 30px 10px;
+		margin-bottom: 40px;
+	}
+	.price_box .empoint {
+		margin-left: 0;
+		background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+		background-size: 30px;
+	}
+	.price_box .point {
+		margin-left: 0;
+		background: url(/Eoullim/Resource/images/sub/cart_minus.png) no-repeat 0 50%;
+		background-size: 30px;
+	}
+	.price_box.pay_price_box dt {font-size: 14px;}
+	.price_box.pay_price_box .sale {margin-left: 0;}
+	.price_box.pay_price_box .delivery {margin-left: 0;}
+	.point_box {
+		padding: 20px 20px 18px;
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.point_box .input {
+		width: 77px;
+		height: 30px;
+	}
+	.point_box .title {margin-right: 5px;}
+	.point_box .usable {
+		display: block;
+		margin-left: 45px;
+		margin-top: 10px;
+		font-size:12px;
+	}
+	.point_box .check {
+		float: left;
+		position: absolute;
+		top: 10px;
+		left: 265px;
+	}
+
+	/*.point_box .mileage {float: none;margin-top: 30px;display: block;background-color:#006b46;color: #fff;line-height:30px; text-align: center;}  doa */
+	.order_wrap .mileage {font-size: 13px;}
+
+
+	/* check_out */
+	.reserve_area{
+		margin-bottom: 25px;
+		padding: 10px 25px 0;
+	}
+	.reserve_area dl{
+		overflow: hidden;
+		margin-bottom: 20px;
+		font-size: 13px;
+		line-height: 35px;
+		border-top: 1px solid rgb(232,232,232);
+	}
+	.reserve_area dl:first-child{border-top: 0;}
+	.reserve_area dl.total{padding-top: 10px;}
+	.reserve_area dt{
+		width: 100%;
+		text-align: left;
+	}
+	.reserve_area dd{
+		width: 100%;
+		margin-left: 0
+	}
+	.reserve_area dd input[type=text]{height: 36px;}
+	.reserve_area .user_reserve{width: 80px;}
+	.order_wrap .reserve_area .check_box{margin-left: 15px; width: auto; margin-bottom: 0;}
+
+	.payway{margin-top: 10px; padding: 10px 0}
+	.payway span{margin-right: 20px;}
+	.payway label{margin-left:5px; }
+
+	.order_step li{
+		padding: 20px 0 20px;
+		text-align: center;
+	}
+	.order_step li .txt{
+		float: none;
+		margin: 0;
+	}
+	.order_step li .txt dd{display:none;}
+	.order_step li .count{
+		float: none;
+		margin:0 0 5px 0;
+	}
+		/* 梨숈쭠吏몄콬�걚�씤 */
+	.order_search{position: relative; top:0; padding-right: 0; font-family: 'NanumSquareR';}
+	.order_search .title,
+	.order_search .srh_area .select,
+	.order_search .date_slc .calendar{
+	 display:none
+	}
+	.order_search .date_slc > ul{width: 100%;}
+	.order_search .date_slc > ul li{width: 19.97%; box-sizing: border-box}
+	.order_search .date_slc > ul li.last{display:none}
+	.order_search .srh_area{overflow: hidden; margin: 10px 0 0}
+	.order_search .srh_area .input{float:left; width: 77%; box-sizing: border-box;}
+	.order_search .srh_area .btn_search{
+		float:right;
+		display: block;
+		position: relative;;
+		top: 0px;
+		right: 0px;
+		width: 20%;
+		height: 38px;
+		padding: 0px;
+	}
+
+	/* related_area */
+	.related_area .product_list {margin: 35px 30px 0;}
+	.related_area .product_list li{width:46.5%;}
+	.related_area .product_list li:nth-child(2n){border:0 !important; padding: 0; margin: 0}
+	.related_area .product_list li:nth-child(3n){border-right: 1px solid rgb(238,238,238) !important; margin: 0 2.4% 40px 0; padding-right: 2.4%}
+}
+
+/* 梨좑옙裕얜껌�긾硫ㅿ옙�뵵�긾�뵎占� */
+@media screen and (min-width:768px) and (max-width:1199px) {
+	.order_wrap .info_list{margin-bottom: 40px}
+	.order_wrap{margin:30px 20px 95px}
+	/* cart */
+	.price_box p{
+		float:none;
+		margin: 35px 25px 15px 25px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid rgb(102,102,102);
+		font-size: 16px;
+	}
+
+
+	/* check_out */
+	.gift_area li{width: 33.3%; padding: 35px 0 20px;}
+	.gift_area li img{width:80%;}
+	/* popup order*/
+	.order_popup{width:100%; min-width: 685px; box-sizing:border-box}
+	.order_wrap .btn_box4{margin: 40px 0 45px;}
+
+	/*mypage return_area */
+	.return_area li{
+		float:none;
+		width: 100%;
+		padding: 30px 0 25px 30px;
+		height: auto;
+		border-left:none;
+		border-top: 1px solid rgb(255,255,255);
+		box-sizing: border-box;
+	}
+	/* 梨섏㎏占쎌뫂占쏙옙�뇺�뀓�占쎈�ㅼ죿占쎌㏈吏� */
+	.refund_area .refund_select{width: 20%}
+	.refund_area .refund_input{width: 77%}
+}
+
+/* 梨섏㎣吏�梨섏㎏占쎌뵵占쏀샄姨�  */
+@media screen and (max-width:767px) {
+	/*info_list*/
+	.order_wrap .info_list{margin-bottom: 25px}
+
+	.info_list li a div{top: 17px; line-height:22px}
+	.info_list li .cart,
+	.info_list li .wish,
+	.info_list li .today,
+	.info_list li .coupon,
+	.info_list li .point{background-position: 50% 20px}
+
+	.info_list li:hover .cart, .info_list li.on .cart,
+	.info_list li:hover .wish, .info_list li.on .wish,
+	.info_list li:hover .today, .info_list li.on .today,
+	.info_list li:hover .coupon, .info_list li.on .coupon,
+	.info_list li:hover .point, .info_list li.on .point{background-position: 50% 20px}
+
+	.order_wrap{margin:25px 0 0}
+	.order_wrap .order_title{font-size: 16px;}
+	.order_wrap .order_title + table{margin-top: 10px;}
+	.order_wrap .title_style1{margin-bottom: 25px;}
+	.order_wrap .check_box{width: 100%; margin-bottom:10px}
+	.order_wrap .order_check .label_style{
+		padding-left: 25px;
+		background: url(/images/sub/bg_check1.gif) no-repeat 0 20%;
+	}
+	.order_wrap .order_check input[type=checkbox]:checked.check_style + label.label_style{background-position: 0 20%;}
+
+	/* cart */
+	.order_wrap .btn_box5{
+		margin:30px 0 60px;
+	}
+	.order_wrap .btn_box5 a{
+		width: 48.43%;
+		margin-right: 1.5%;
+		font-size: 16px;
+	}
+	.order_wrap .btn_box5 a:nth-child(3),
+	.order_wrap .btn_box5 .btn_style9{margin-right: 0}
+	.order_wrap .btn_box5 .btn_style10{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.order_wrap .btn_box5 a:nth-child(1){
+		width:100%;
+		margin-bottom: 10px;
+	}
+
+	/* related_area */
+	.related_area .product_list {margin: 20px 0px 0;}
+	.related_area .product_list li:nth-child(2n){border:0 !important; padding: 0 0 0 3.5%; margin: 0 0 20px 0}
+	.related_area .product_list li:nth-child(3n){border-right: 1px solid rgb(238,238,238) !important; margin: 0 0 20px 0; padding-right: 3.1%}
+
+	/* check_out */
+	.gift_area{margin: 10px 0 50px;}
+	.gift_area li{width: 48.89%; padding: 15px 0 15px;}
+	.gift_area li img{width:100%;}
+	.gift_area li label{
+		height: 35px;
+		font-size: 13px;
+		line-height: 15px
+	}
+	.gift_area li label span{color: rgb(51,51,51)}
+	.gift_area li input{width:15px; height: 15px}
+
+	.order_wrap .btn_box4{margin-top: 25px}
+	.order_wrap .btn_box4 a{
+		width: 47.3%;
+		height:40px;
+		line-height:40px;
+		margin-bottom: 10px;
+		font-size: 14px;
+	}
+	.pay_info{padding:20px 0 15px}
+	.nonmember_info p,
+	.pay_info p{margin-bottom: 5px; font-size: 16px;}
+	.nonmember_info li,
+	.pay_info li{line-height: 22px;}
+	.nonmember_info {
+		margin-bottom:40px;
+		padding: 30px 20px;
+	}
+
+	/* popup order*/
+	.order_popup{
+		top:0;
+		width: 277px;
+		height:400px;
+		min-width: 229px;
+		padding: 30px 20px 50px;
+		margin: 50px auto 0;
+	}
+	.order_popup .popup_title{font-size: 16px; margin-bottom: 20px; line-height: 25px;}
+	.order_popup .btn_use{
+		margin: 30px auto 50px;
+		overflow:hidden;
+		width:135px;
+	}
+	.order_popup .btn_use a{
+		display: inline-block;
+		width: 135px;
+		font-size: 13px;
+	}
+	.order_popup .close button{
+		width: 39px;
+		height: 39px;
+	}
+	.order_popup .close button img{width: 100%}
+	.order_popup .popup_table2 {
+		margin-bottom: 30px;
+	}
+	/* 梨숈찓�샍梨좏삨吏몄콬�씤�샄梨숋옙遺댐옙占�, 梨섏㎏吏몄콡占쎌죾�돟占쎌쭥姨뚯콡占쎌줂裕쇈긾�돞占� 梨섏㎣吏�梨섏㎏占쎌뵵占쏀샄姨� 梨좑옙�뵔裕쇽옙�샄夷덉콠夷랃옙占� */
+	.order_popup .order_form{
+		max-height: 320px;
+		overflow-y: scroll
+	}
+	.order_popup_scroll{
+		max-height: 320px;
+		overflow-y: scroll;
+	}
+	.order_popup .popup_table1{display: none}
+	.order_popup .popup_m_table1{display: block; font-size: 14px;}
+	.order_popup > .popup_m_table1{margin-bottom: 25px;}
+	.order_popup .popup_m_table1 th{
+		width:80px;
+		padding-top:20px;
+		font-weight: normal;
+		text-align:left;
+	}
+	.order_popup .popup_m_table1 td{margin-right:5px; padding-top:20px;}
+	.order_popup .popup_m_table1 .last th,
+	.order_popup .popup_m_table1 .last td{padding-bottom: 10px;}
+	.order_popup .select_area select{
+		width: 100%;
+		min-width:165px;
+		height: 35px;
+		border: 1px solid rgb(204,204,204);
+		box-sizing: border-box;
+		font-size: 13px;
+		padding: 0 22px 0 5px;
+		background: url(/Eoullim/Resource/images/sub/bg_select_arrow_m.gif) no-repeat 100% 50%;
+		background-size: 22px 33px;
+		border-radius: 0px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
+	}
+	.order_popup .addr_area{margin:20px 0 35px;}
+	.order_popup .addr_area .txt{
+		font-size:13px;
+		line-height: 24px;
+	}
+	.order_popup .addr_area .txt + .txt{margin-top: 15px;}
+	.order_popup .addr_area .btn_add{float:none}
+	.order_popup .addr_area .btn_add a{
+		width:48.5%;
+		margin-top:10px;
+		padding: 3px 0 4px;
+		font-size: 11px;
+	}
+	.order_popup .btn_box1 a{
+		width: 48%;
+		margin-right:4%;
+		height: 50px;
+		line-height: 48px;
+	}
+	.order_popup .btn_box1 a:last-child{float: right; margin-right: 0;}
+	.order_popup .btn_box1 a:first-child{width:100%; margin: 0 0 10px;}
+	.order_popup .btn_box1 .btn_style9{ margin-right: 0}
+	.order_popup .btn_box1 .btn_style6{padding: 5px 0;width: 97.8%; margin-top: 10px;box-sizing:border-box; margin-right: 0}
+	.order_popup .btn_add{margin-left: 10px; float: right;}
+	/*梨숈쭥姨뚯콠吏�夷띿콡�깙�삩梨숉샍占썩뼠�긾�깉�뒛占쏙옙�뀣�뫂占쏀샍占쏙옙 梨좏씤�샄梨숋옙遺댐옙占�*/
+	.orderer_popup {
+		width: 277px;
+		min-width: 229px;
+		margin: 0 auto;
+	}
+	.orderer_popup .close button{
+		top: 17px;
+		right: 15px;
+	}
+	.orderer_popup .popup_title {
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+	.orderer_popup .txt {
+		font-size: 13px;
+		line-height: 20px;
+	}
+	.orderer_popup .popup_table2 th{width: 70px; font-size: 13px;}
+	.orderer_popup .popup_table2 td{padding: 20px 0;}
+	.orderer_popup .popup_table2 td input[type=text], .orderer_popup .popup_table2 td select{height: 35px;}
+	.orderer_popup .popup_table2 .input_size1 {width: 100%;}
+	.orderer_popup .btn_box1 a{width: 135px; font-size: 13px;}
+
+	/*梨섏㎏吏몄콡占쎌죾�돟占쎌쭬占쎄텢 梨숈쮮占쎌뵵�걿寃멸텢 梨좑옙�뵔裕쇽옙�샄夷덉콠夷랃옙占� */
+	.order_popup .mr{margin-right:1.5%;}
+	.order_popup .ml{margin-left:1.8%;}
+	.order_popup .popup_table2 th{width: 75px;font-size:13px; vertical-align: top; padding-top: 20px;}
+	.order_popup .popup_table2 td{padding: 15px 0;}
+	.order_popup .popup_table2 td input[type=text],
+	.order_popup .popup_table2 td select{padding-left:5px; height:33px; font-family:'sans-serif';}
+	.order_popup .popup_table2 td select{
+		padding: 0 22px 0 5px;
+		font-family: inherit;
+		background: rgb(238,238,238) url(/Eoullim/Resource/images/sub/bg_select_arrow_m.gif) no-repeat 100% 50%;
+		background-size: 22px 33px;
+		border-radius: 0px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+	.order_popup .popup_table2 td .check_box{margin: 10px 0 0 0}
+	.order_popup .popup_table2 td input[type=checkbox] + label{
+		font-weight: 400;
+		background: url(/images/sub/bg_check1.gif) no-repeat 0 2px;}
+	.order_popup .popup_table2 .input_size1{width: 100%}
+	.order_popup .popup_table2 .input_size2{width: 24%}
+	.order_popup .popup_table2 .input_size3{width: 45.8%}
+	.order_popup .popup_table2 .input_size4{width: 100%; max-width: 410px}
+	.order_popup .popup_table2 .select_size1{width: 27.4%}
+	.order_popup .popup_table2 .btn_style2{
+		display: inline-block;
+		width: 45.8%;
+		padding:9px 0 8px;
+		margin:0px 0 0 2%;
+	}
+	.order_popup .popup_table2 .addr input{margin-top: 10px;}
+
+	/*梨쀬㏈吏몄콡�샍�씥 梨좏깘占쎌뫂占쏀샄夷덉콡吏좑옙沅� */
+	.order_txt1{
+		padding: 20px 0;
+		line-height: 22px;
+	}
+	.order_txt1 > strong{font-size:15px;}
+
+	/* 梨숈쭥姨뚯콠吏�夷띿콡占쎄퐪占쎌솙�긾竊ο옙 梨좏깘占쎌뫂占쏀샄夷덉콡吏좑옙沅� */
+	.complete_txt{padding: 30px 0;}
+	.complete_txt .txt1{font-size: 18px;}
+	.complete_txt .txt2{
+		font-size: 13px;
+		margin-top: 5px;
+		line-height: 20px;
+	}
+
+	.order_step{margin-bottom: 35px}
+
+	.order_step li{
+		padding: 10px 0 10px;
+		text-align: center;
+		background: url(/Eoullim/Resource/images/sub/bg_list_bar02_m.gif) no-repeat 0 50%;
+		background-size:1px
+	}
+	.order_step li .txt dt{font-size: 14px;}
+	.order_step li .count{font-size:2.167em; line-height: 26px;}
+
+	.order_wrap .title_area .btn_modify{
+		width: 93px;
+		margin-left: 25px;
+		padding: 5px 0 2px;
+		font-size: 11px;
+		text-align: center;
+	}
+	.order_wrap .my_info_table{margin: 0px 0 5px;}
+	.return_area{
+		overflow:hidden;
+		margin: 30px 0 0px;
+		font-family: 'NanumSquareR';
+		background: rgb(246,246,246)
+	}
+	.return_area li{
+		float: none;
+		width: 100%;
+		padding: 10px 0 15px 10px;
+		height: auto;
+		border-left:none;
+		border-top:1px solid rgb(255,255,255);
+	}
+	.return_area li h3{margin-bottom:10px;font-size: 14px;}
+	.return_area li .return_txt{font-size: 13px; line-height: 18px;}
+	.srh_result{
+		margin: 25px 0 20px;
+		font-size: 13px;
+		line-height: 18px;
+		color: rgb(51,51,51);
+		text-align: center;
+	}
+	.srh_result strong{margin-bottom: 5px;}
+
+	/* 梨숈쭠吏몄콬�걚�씤 */
+	.order_search{margin: 10px 0 50px;}
+	.order_search .date_slc > ul li a{padding: 7px 0 8px;}
+	.order_search .srh_area .input{height: 33px; line-height: 33px;}
+	.order_search .srh_area .btn_search{height: 33px; line-height:33px;}
+
+	
+	.refund_area{margin-bottom: 45px;}
+	.refund_area .refund_title{
+		margin: 15px 0 10px;
+		font-size: 13px;
+		padding-left: 15px;
+		background: url(/Eoullim/Resource/images/sub/bg_special_char1_m.gif) no-repeat 0 5px;
+		background-size: 9px 10px;
+	}
+	.refund_area .refund_select{
+		float:none;
+		width:60%;
+		height:33px;
+		margin: 0 0 10px;
+		line-height: 33px;
+	}
+	.refund_area .refund_input{
+		width: 100%;
+		height: 35px;
+		font-size: 13px;
+		box-sizing: border-box;
+	}
+}

@@ -1,0 +1,61 @@
+@charset "utf-8";
+/*! 초기화(옵션) 스타일 */
+
+body{font-size:13px;}
+::-moz-selection{background:#b3d4fc;text-shadow:none}
+::selection{background:#b3d4fc;text-shadow:none}
+
+img{vertical-align:middle; border:0;}
+ol, ul, li, dl, dt, dd { list-style: none;}
+h1,h2,h3,h4 {padding:0; margin:0}
+div,dl,dt,dd,ul,li,ol,p,figure {padding:0; margin:0}
+
+
+/* 필요한 base 넣을것 */
+body{padding:0; margin:0;}
+a{text-decoration:none;}
+.hidden{display:none;}
+.acc-hidden {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; line-height: 0; overflow: hidden; padding: 0; position: absolute;  width: 1px; visibility:hidden; font-size:0;  }
+fieldset{padding:0; margin:0; border:0;}
+input[type='text'],input[type='tel'], textarea{-webkit-appearance:none; -webkit-border-radius:0; border-radius: 0; margin:0; padding:0; border:0; line-height:normal;}
+input[type='password']{  -webkit-border-radius:0; border-radius: 0; margin:0; padding:0; border:0; line-height:normal; font-family: sans-serif !important;}
+input[type='number']{-webkit-appearance:none; -webkit-border-radius:0; border-radius: 0;}
+.fl{float:left;}
+.fr{float:right;}
+button{background:none; border:0;}
+table{border-collapse:collapse;border-spacing:0}
+.ui-loader{display:none;}
+select{border-radius:none; -webkit-border-radius: 0}
+.cb{clear:both;}
+.cf:after{display: block;content: '';clear: both;}
+a[href^=tel]{color: inherit}
+
+.mt0{margin-top:0 !important;}
+.mt20{margin-top:20px !important;}
+.mb25{margin-bottom:25px !important;}
+
+.pt0{padding-top:0 !important;}
+
+.hidden{display:none;}
+
+
+/*이미지 오버 효과*/
+/* a img:hover{
+	opacity:0.8;
+	transition:all 0.5s ease 0s;
+} */
+.banner_box a img,
+.main_slider a img,
+.brand_index .index_banner a img,
+.main_men .product_list li .photo span img,
+.product_box2 .product_list li .photo span img{
+	opacity:1;
+	transition:none;
+}
+
+/*font COLOR*/
+.fc01 {color:rgb(207,102,26) !important;}
+.fc01 a {color:rgb(207,102,26) !important;}
+.fc02 {color:rgb(105,81,157) !important;}
+.fc03 {color:rgb(210,123,71) !important;}
+.fc04 {color:rgb(243,130,0) !important;}

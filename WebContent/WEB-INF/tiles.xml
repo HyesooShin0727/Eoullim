@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="form" template="/tiles/layout.jsp">
+		<put-attribute name="title" value="어울림" />
+		<put-attribute name="header" value="/tiles/header.jsp" />
+		<put-attribute name="slider" value = ""/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/tiles/footer.jsp" />
+	</definition>
+
+	<!-- 사용자 -->
+	
+	<!-- 메인화면 및 로그인/로그아웃, 회원가입 -->
+	<definition name="main" extends = "form">
+		<put-attribute name="slider" value ="/tiles/slider.jsp"/>
+		<put-attribute name="body" value = "/tiles/body.jsp"/>
+	</definition>
+	
+	<!-- <definition name="adminmain" extends = "form">
+		<put-attribute name="body" value = "/admin/main.jsp"/>
+	</definition> -->
+	
+	<definition name="login" extends = "form">
+		<put-attribute name="body" value = "/user/member/LoginForm.jsp"/>
+	</definition>
+	
+	<definition name="findform" extends = "form">
+		<put-attribute name="body" value = "/user/member/FindForm.jsp"/>
+	</definition>
+	
+	<definition name="findidform" extends = "form">
+		<put-attribute name="body" value = "/user/member/FindId.jsp"/>
+	</definition>
+	
+	<definition name="findidresult" extends = "form">
+		<put-attribute name="body" value = "/user/member/FindIdSuccess.jsp"/>
+	</definition>
+	
+	<definition name="findpwform" extends = "form">
+		<put-attribute name="body" value = "/user/member/FindPw.jsp"/>
+	</definition>
+	
+	<definition name="findpwresult" extends = "form">
+		<put-attribute name="body" value = "/user/member/FindPwSuccess.jsp"/>
+	</definition>
+	
+	<definition name="joinform1" extends = "form">
+		<put-attribute name="body" value = "/user/member/JoinForm1.jsp"/>
+	</definition>
+	
+	<definition name="joinform2" extends = "form">
+		<put-attribute name="body" value = "/user/member/JoinForm2.jsp"/>
+	</definition>
+	
+	<definition name="joinform3" extends = "form">
+		<put-attribute name="body" value = "/user/member/JoinForm3.jsp"/>
+	</definition>
+	
+	<!-- 상품 -->
+	<definition name="goodslist" extends = "form">
+		<put-attribute name="body" value = "/user/goods/user_goods_list.jsp"/>
+	</definition>
+	
+	<definition name="usergoodsview" extends = "form">
+		<put-attribute name="body" value="/user/goods/user_goods_view.jsp"/>
+	</definition>
+	
+	<!-- 찜하기 -->
+	<definition name="wishlist" extends = "form">
+		<put-attribute name="body" value = "/user/wishlist/user_wish_list.jsp"/>
+	</definition>
+	
+	<!-- 장바구니 -->
+	<definition name="cartlist" extends = "form">
+		<put-attribute name="body" value = "/user/cart/user_cart_list.jsp"/>
+	</definition>
+	
+	<!-- 주문하기 -->
+	<definition name="orderlist" extends = "form">
+		<put-attribute name="body" value = "/user/order/user_order_list.jsp"/>
+	</definition>
+	
+	<!-- 게시판 -->
+	
+	<!-- 리뷰 -->
+	<definition name="reviewlist" extends = "form">
+		<put-attribute name="body" value = "/user/review/List.jsp"/>
+	</definition>
+	
+	<definition name="reviewview" extends = "form">
+		<put-attribute name="body" value = "/user/review/View.jsp"/>
+	</definition>
+	
+	<definition name="reviewwriteform" extends = "form">
+		<put-attribute name="body" value = "/user/review/Write.jsp"/>
+	</definition>
+	
+	<!-- 중고거래 -->
+	<definition name="usedlist" extends = "form">
+		<put-attribute name="body" value = "/user/used/List.jsp"/>
+	</definition>
+	
+	<definition name="usedwriteform" extends = "form">
+		<put-attribute name="body" value = "/user/used/Write.jsp"/>
+	</definition>
+	
+	<definition name="usedview" extends = "form">
+		<put-attribute name="body" value = "/user/used/View.jsp"/>
+	</definition>
+	
+	<!-- 공지사항 -->
+	<definition name="noticelist" extends = "form">
+		<put-attribute name="body" value = "/user/notice/Noticelist.jsp"/>
+	</definition>
+	
+	<definition name="noticeview" extends = "form">
+		<put-attribute name="body" value = "/user/notice/Noticeview.jsp"/>
+	</definition>
+	
+	<!-- faq -->
+	<definition name="faqlist" extends = "form">
+		<put-attribute name="body" value = "/user/faq/FAQlist.jsp"/>
+	</definition> 
+	
+	<definition name="faqview" extends = "form">
+		<put-attribute name="body" value = "/user/faq/FAQview.jsp"/>
+	</definition>
+	<!-- faq -->
+	
+	<!-- 마이페이지 -->
+	<definition name="myorderlist" extends = "form">
+		<put-attribute name="body" value = "/user/order/myorder.jsp"/>
+	</definition>
+	
+	<definition name="msgbox" extends = "form">
+		<put-attribute name="body" value = "/Message/Messagelist.jsp"/>
+	</definition>
+	
+	<definition name="msgview" extends = "form">
+		<put-attribute name="body" value = "/Message/Messageview.jsp"/>
+	</definition>
+	
+	<definition name="msgwriteform" extends = "form">
+		<put-attribute name="body" value = "/Message/Messagewrite.jsp"/>
+	</definition>
+	
+	<definition name="msgwritesuccess" extends = "form">
+		<put-attribute name="body" value = "/Message/sendsuccess.jsp"/>
+	</definition>
+	
+	<definition name="mypagemain" extends = "form">
+		<put-attribute name="body" value = "/user/mypage/MyPageMain.jsp"/>
+	</definition>
+	
+	<definition name="mycoupon" extends = "form">
+		<put-attribute name="body" value = "/user/coupon/CouponBox.jsp"/>
+	</definition>
+	
+	<definition name="usedcoupon" extends = "form">
+		<put-attribute name="body" value = "/user/coupon/UsedCouponBox.jsp"/>
+	</definition>
+	
+	<definition name="modifyform" extends = "form">
+		<put-attribute name="body" value = "/user/member/Modify.jsp"/>
+	</definition>
+	
+	<definition name="qnalist" extends = "form">
+		<put-attribute name="body" value = "/user/QnA/QnAlist.jsp"/>
+	</definition>
+	
+	<definition name="qnaview" extends = "form">
+		<put-attribute name="body" value = "/user/QnA/QnAview.jsp"/>
+	</definition>
+	
+	<definition name="qnawriteform" extends = "form">
+		<put-attribute name="body" value = "/user/QnA/QnAwrite.jsp"/>
+	</definition>
+	
+	<!-- footer링크 -->
+	<definition name="agree" extends = "form">
+		<put-attribute name="body" value = "/etc/agree.jsp"/>
+	</definition>
+	
+	<definition name="privacy" extends = "form">
+		<put-attribute name="body" value = "/etc/privacy.jsp"/>
+	</definition>
+	
+	<definition name="store" extends = "form">
+		<put-attribute name="body" value = "/etc/store.jsp"/>
+	</definition>
+	
+	<!-- 관리자 -->
+	
+	<!-- 회원관리 -->
+	<definition name="adminmemberlist" extends = "form">
+		<put-attribute name="body" value = "/admin/member/List.jsp"/>
+	</definition>
+	
+	<definition name="adminmemberview" extends = "form">
+		<put-attribute name="body" value = "/admin/member/View.jsp"/>
+	</definition>
+	
+	<!-- 주문관리 -->
+	<definition name="adminorderlist" extends = "form">
+		<put-attribute name="body" value = "/admin/order/list.jsp"/>
+	</definition>
+	
+	<!-- 상품관리 -->
+	<definition name="admingoodslist" extends = "form">
+		<put-attribute name="body" value = "/admin/goods/admin_goods_list.jsp"/>
+	</definition>
+	
+	<definition name="admingoodsview" extends = "form">
+		<put-attribute name="body" value = "/admin/goods/admin_goods_view.jsp"/>
+	</definition>
+	
+	<definition name="admingoodswrite" extends = "form">
+		<put-attribute name="body" value = "/admin/goods/admin_goods_write.jsp"/>
+	</definition>
+	
+	<!-- 게시판 관리 -->
+	<!-- QNA -->
+	<definition name="adminqnalist" extends = "form">
+		<put-attribute name="body" value = "/admin/qna/List.jsp"/>
+	</definition>
+	
+	<definition name="adminqnaview" extends = "form">
+		<put-attribute name="body" value = "/admin/qna/view.jsp"/>
+	</definition>
+	
+	<definition name="adminqnawrite" extends = "form">
+		<put-attribute name="body" value = "/admin/qna/write.jsp"/>
+	</definition>
+	
+	<!-- FAQ -->
+	<definition name="adminfaqlist" extends = "form">
+		<put-attribute name="body" value = "/admin/faq/List.jsp"/>
+	</definition>
+	
+	<definition name="adminfaqview" extends = "form">
+		<put-attribute name="body" value = "/admin/faq/view.jsp"/>
+	</definition>
+	
+	<definition name="adminfaqwrite" extends = "form">
+		<put-attribute name="body" value = "/admin/faq/write.jsp"/>
+	</definition>
+	
+	<!-- 공지사항 관리 -->
+
+	<definition name="adminnoticelist" extends="form">
+    	<put-attribute name="body" value="/admin/notice/list.jsp"/>
+    </definition>
+
+	<definition name="adminnoticeview" extends="form">
+		<put-attribute name="body" value="/admin/notice/view.jsp"/>
+	</definition>
+
+	<definition name="adminnoticewriteform" extends="form">
+		<put-attribute name="body" value="/admin/notice/write.jsp"/>
+	</definition>
+	
+	<!-- 쿠폰관리 -->
+	<definition name="admincouponlist" extends = "form">
+		<put-attribute name="body" value = "/admin/coupon/List.jsp"/>
+	</definition>
+	
+	<definition name="admincouponview" extends = "form">
+		<put-attribute name="body" value = "/admin/coupon/View.jsp"/>
+	</definition>
+	
+	<definition name="admincouponwrite" extends = "form">
+		<put-attribute name="body" value = "/admin/coupon/Write.jsp"/>
+	</definition>
+</tiles-definitions>

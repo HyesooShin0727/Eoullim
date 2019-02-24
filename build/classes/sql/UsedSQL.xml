@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="uboard" type = "user.used.UsedVO"/>
+	<typeAlias alias="ucomment" type = "user.used.Used_CommentVO"/>
+	
+	<resultMap class = "uboard" id = "uboardRes">
+		<result column = "uboard_no" property = "uboard_no"/>
+		<result column = "uboard_sub" property = "uboard_sub"/>
+		<result column = "uboard_member_id" property = "uboard_member_id"/>
+		<result column = "uboard_member_name" property = "uboard_member_name"/>
+		<result column = "uboard_passwd" property = "uboard_passwd"/>
+		<result column = "uboard_content" property = "uboard_content"/>
+		<result column = "uboard_readhit" property = "uboard_readhit"/>
+		<result column = "uboard_regdate" property = "uboard_regdate"/>
+		<result column = "uboard_file_orgname" property = "uboard_file_orgname"/>
+		<result column = "uboard_file_savname" property = "uboard_file_savname"/>
+		<result column = "ref" property = "ref"/>
+		<result column = "re_step" property = "re_step"/>
+		<result column = "re_level" property = "re_level"/>
+	</resultMap>
+	
+	<resultMap class = "ucomment" id = "ucommentRes">
+		<result column = "ucomment_no" property = "ucomment_no"/>
+		<result column = "ucomment_orgno" property = "ucomment_orgno"/>
+		<result column = "ucomment_id" property = "ucomment_id"/>
+		<result column = "ucomment_passwd" property = "ucomment_passwd"/>
+		<result column = "ucomment_content" property = "ucomment_content"/>
+		<result column = "ucomment_regdate" property = "ucomment_regdate"/>
+		
+		<!-- 
+		<result column = "ref" property = "ref"/>
+		<result column = "re_step" property = "re_step"/>
+		<result column = "re_level" property = "re_level"/> 
+		 -->
+	</resultMap>
+	
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="uboard-select-all">
+		select * from used
+	</sql>
+	
+	<sql id="ucomment-select-all">
+		select * from used_comment
+	</sql>
+	
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="uboard-where-no">
+		where uboard_no = #uboard_no#
+	</sql>
+	
+	
+	<sql id="ucomment-where-no">
+		where ucomment_no = #ucomment_no#
+	</sql> 
+	
+	
+	<!-- select 쿼리문 정의 -->
+	
+	<!-- 모든 게시글을 꺼내와서 ref를 기준으로 내림차순 ,re_step을 기준으로 오름차순 정렬 -->
+	<select id="selectAllUboard" resultMap = "uboardRes">
+		<include refid="uboard-select-all"/>
+		order by ref DESC, re_step ASC
+	</select>
+	
+	
+	<!-- 원글번호에 해당하는 모든 댓글을 꺼내와서 정렬???? -->
+	<!--view.jsp 하단에 리스트를 반복해서 출력하기위해 필요-->
+ 	<!-- 
+ 	<select id="selectAllUcomment" resultMap = "ucommentRes">
+		<include refid="ucomment-select-all"/>
+		where ucomment_orgno = #ucomment_orgno#
+		order by ref DESC, re_step ASC
+	</select>	
+	 -->
+
+	 <!-- 댓글의 댓글이 없을 경우의 쿼리문 정의
+	 댓글의 번호에 해당하는 한줄의  데이터를 꺼내와서 내림차순 정렬 -->
+	 	
+	<select id="selectAllUcomment" resultMap = "ucommentRes" parameterClass="int">
+		select * from used_comment
+		where ucomment_orgno = #ucomment_no#
+		order by ucomment_no DESC
+	</select>	
+ 	
+	
+	<!-- 게시글 번호에 해당하는 한줄의 데이터를 꺼내온다 -->
+	<select id="selectOneUboard" resultMap = "uboardRes">
+		<include refid="uboard-select-all"/>
+		<include refid="uboard-where-no"/>
+	</select>
+	
+	<!-- 댓글 번호에 해당하는 한줄의 데이터를 꺼내온다 ?????????-->
+	<select id="selectOneUcomment" resultMap = "ucommentRes">
+		<include refid="ucomment-select-all"/>
+		<include refid="ucomment-where-no"/>
+		<!-- where ucomment_orgno = #ucomment_no# -->
+	</select>
+	
+	<!-- 글 번호에 해당하는 한줄의 데이터를 꺼내온다 -->
+	<select id="selectLastNoUboard" resultClass="uboard">
+		select max(uboard_no) as uboard_no from used
+	</select>
+	
+	<!-- 게시글 비밀번호 찾기 -->
+	<select id="selectPasswdUboard" resultMap="uboardRes">
+		<include refid="uboard-select-all"/>
+		<include refid="uboard-where-no" />
+		AND uboard_passwd = #uboard_passwd#
+	</select>
+	
+	<!-- 댓글 비밀번호 찾기 -->
+	<select id="selectPasswdUcomment" resultMap="ucommentRes">
+		<include refid="ucomment-select-all"/>
+		<include refid="ucomment-where-no" />
+		AND ucomment_passwd = #ucomment_passwd#
+	</select>
+	
+	<!-- 검색로직 -->
+	<select id="UboardselectSearchW" resultMap="uboardRes" parameterClass="java.util.Map">
+		<include refid="uboard-select-all" />
+		 where $searcht$ like '%'||'$searchk$'||'%'
+		order by uboard_no desc
+	</select>
+	<!-- <select id="UboardselectSearchS" resultMap="uboardRes" parameterClass="string">
+		<include refid="uboard-select-all" />
+		 WHERE uboard_sub like #searchKeyword#
+		 ORDER BY uboard_no DESC
+	</select>
+	<select id="UboardselectSearchC" resultMap="uboardRes" parameterClass="string">
+		<include refid="uboard-select-all" />
+		 WHERE uboard_content like #searchKeyword#
+		 ORDER BY uboard_no DESC
+	</select> -->
+	
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertUboard" parameterClass="uboard">
+		insert into used(uboard_no,
+			uboard_sub,
+			uboard_member_id,
+			uboard_member_name,
+			uboard_passwd,
+			uboard_content,
+			uboard_readhit,
+			uboard_regdate,
+			uboard_file_orgname,
+			uboard_file_savname,
+			re_step,
+			re_level,
+			ref)
+			
+			values(used_no_seq.nextval,
+			#uboard_sub#,
+			#uboard_member_id#,
+			#uboard_member_name#,
+			#uboard_passwd#,
+			#uboard_content#,
+			#uboard_readhit#,
+			#uboard_regdate#,
+			#uboard_file_orgname#,
+			#uboard_file_savname#,
+			#re_step#,
+			#re_level#,
+			used_no_seq.currval)
+			
+	</insert>
+	
+	<insert id="insertReplyUboard" parameterClass="uboard">
+		insert into used(uboard_no,
+			uboard_sub,
+			uboard_member_id,
+			uboard_member_name,
+			uboard_passwd,
+			uboard_content,
+			uboard_readhit,
+			uboard_regdate,
+			uboard_file_orgname,
+			uboard_file_savname,
+			re_step,
+			re_level,
+			ref)
+			
+			values(Used_no_seq.nextval,
+			#uboard_sub#,
+			#uboard_member_id#,
+			#uboard_member_name#,
+			#uboard_passwd#,
+			#uboard_content#,
+			#uboard_readhit#,
+			#uboard_regdate#,
+			#uboard_file_orgname#,
+			#uboard_file_savname#,
+			#re_step#,
+			#re_level#,
+			#ref#)
+	</insert>
+	
+	<insert id="insertUcomment" parameterClass="ucomment">
+		insert into used_comment(ucomment_no,
+			ucomment_orgno,
+			ucomment_id,
+			ucomment_passwd,
+			ucomment_content,
+			ucomment_regdate)
+			<!-- 
+			re_step,
+			re_level,
+			ref)
+			 -->
+		values(Used_comment_no_seq.nextval,
+			#ucomment_orgno#,
+			#ucomment_id#,
+			#ucomment_passwd#,
+			#ucomment_content#,
+			#ucomment_regdate#)
+			<!-- 
+			#re_step#,
+			#re_level#,
+			Used_comment_no_seq.currval) 
+			-->	
+	</insert>
+	
+	<!-- 댓글의 댓글 -->		
+	<insert id="insertReplyUcomment" parameterClass="ucomment">
+		insert into used_comment(ucomment_no,
+			ucomment_orgno,
+			ucomment_id,
+			ucomment_passwd,
+			ucomment_content,
+			ucomment_regdate)
+			<!-- 
+			re_step,
+			re_level,
+			ref)
+			 -->
+		values(used_comment_no_seq.nextval,
+			#ucomment_orgno#,
+			#ucomment_id#,
+			#ucomment_passwd#,
+			#ucomment_content#,
+			#ucomment_regdate#)
+			<!-- 
+			#re_step#,
+			#re_level#,
+			#ref#)
+			 -->
+	</insert>
+	
+	
+	<!-- update 쿼리문 정의-->
+	<!--글수정 -->
+	<update id="updateUboard" parameterClass="uboard">
+		update used set
+			uboard_sub = #uboard_sub#,
+			uboard_member_name = #uboard_member_name#,
+			uboard_passwd = #uboard_passwd#,
+			uboard_content = #uboard_content#
+			
+		<include refid = "uboard-where-no"/>
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateReadHitUboard" parameterClass="uboard">
+		update used set uboard_readhit = uboard_readhit+1
+		<include refid="uboard-where-no"/>
+	</update>
+	
+	<!-- 답글의 답글 처리 -->
+	<update id="updateReplyStepUboard" parameterClass="uboard">
+		update used set re_step=re_step+1
+		where ref=#ref# and re_step> #re_step#
+	</update>
+	 
+	<!-- 댓글의 댓글 처리 -->
+	<!-- 
+	<update id="updateReplyStepUcomment" parameterClass="ucomment">
+		update used_comment set re_step = re_step+1
+		where ref=#ref# and re_step > #re_step#
+	</update>
+	 -->
+	 
+	<!-- 파일업로드 -->
+	<update id="updateFileUboard" parameterClass="uboard">
+			update used set uboard_file_orgname = #uboard_file_orgname#
+				,uboard_file_savname = #uboard_file_savname#
+			<include refid="uboard-where-no" />
+	</update>
+	  
+	<!--  delete 쿼리문 정의 -->
+	<!-- 게시글 삭제 -->
+	<delete id="deleteUboard" parameterClass="uboard">
+		delete from used
+		<include refid="uboard-where-no"/>
+	</delete>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteUcomment" parameterClass="ucomment">
+		delete from used_comment
+		<include refid="ucomment-where-no"/>
+	</delete>
+	 
+</sqlMap>

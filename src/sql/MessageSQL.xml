@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="message" type="message.MessageVO"/>
+	
+	<resultMap class = "message" id = "messageRes">
+		<result column = "msg_no" property = "msg_no"/>
+		<result column = "msg_send_id" property = "msg_send_id"/>
+		<result column = "msg_rev_id" property = "msg_rev_id"/>
+		<result column = "msg_sub" property = "msg_sub"/>
+		<result column = "msg_content" property = "msg_content"/>
+		<result column = "msg_regdate" property = "msg_regdate"/>
+		<result column = "msg_send_del" property = "msg_send_del"/>
+		<result column = "msg_rev_del" property = "msg_rev_del"/>
+	</resultMap>
+	
+	<sql id = "message-select-all">
+		select * from message
+	</sql>
+	
+	<sql id = "message-where-no">
+		where msg_no = #msg_no#
+	</sql>
+	
+	<select id="selectAllMessage" resultMap= "messageRes">
+		<include refid = "message-select-all"/>
+		order by msg_no desc
+	</select>
+	
+	<select id = "selectRevMessage" resultMap = "messageRes" parameterClass = "string">
+		<include refid="message-select-all"/>
+		where msg_rev_id = #msg_rev_id# and msg_rev_del = 0
+		order by msg_no desc
+	</select>
+	
+	<select id = "selectSendMessage" resultMap = "messageRes" parameterClass = "string">
+		<include refid="message-select-all"/>
+		where msg_send_id = #msg_send_id# and msg_send_del = 0
+		order by msg_no desc
+	</select>
+	
+	<select id = "selectLastMessage" resultClass = "message">
+		select max(msg_no) as msg_no from message 
+	</select>
+	
+	<select id = "selectOneMessage" resultMap = "messageRes">
+		<include refid = "message-select-all"/>
+		<include refid = "message-where-no"/>
+	</select>
+	
+	<select id = "selectSearchMessage" resultMap = "messageRes" parameterClass = "java.util.Map">
+		<include refid="message-select-all"/>
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by msg_no desc
+	</select>
+	
+<!-- 	<select id = "messageBox" resultMap = "messageRes" parameterClass = "string">
+		select * from message where 
+	</select> -->
+	
+	<insert id = "insertMessage" parameterClass = "message">
+		insert into message(msg_no, msg_send_id, msg_rev_id, msg_sub, msg_content, msg_regdate, msg_send_del, msg_rev_del)
+		values (message_no_seq.nextval, #msg_send_id#, #msg_rev_id#, #msg_sub#, #msg_content#, #msg_regdate#, #msg_send_del#, #msg_rev_del#)
+	</insert>
+	
+	<update id = "sendMessagedel" parameterClass = "message">
+		update message set msg_send_del = #msg_send_del#
+		<include refid="message-where-no"/> 
+	</update>
+	
+	<update id = "revMessagedel" parameterClass = "message">
+		update message set msg_rev_del = #msg_rev_del#
+		<include refid="message-where-no"/>
+	</update>
+	
+	<delete id = "deleteMessage" parameterClass = "message">
+		delete from message
+		<include refid = "message-where-no"/>
+	</delete>
+</sqlMap>

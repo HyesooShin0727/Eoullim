@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+	
+	<typeAlias alias="review" type="user.review.ReviewVO" />
+	<typeAlias alias="rcomment" type="user.review.Review_CommentVO" />
+
+	<resultMap class="review" id="reviewRes">
+		<result column="rboard_no" property="rboard_no" />
+		<result column="rboard_sub" property="rboard_sub" />
+		<result column="rboard_id" property="rboard_id" />
+		<result column="rboard_name" property="rboard_name" />
+		<result column="rboard_passwd" property="rboard_passwd" />
+		<result column="rboard_goods" property="rboard_goods" />
+		<result column="rboard_content" property="rboard_content" />
+		<result column="rboard_readhit" property="rboard_readhit" />
+		<result column="rboard_regdate" property="rboard_regdate" />
+		<result column="img_file" property="img_file" />
+		<result column="video_file" property="video_file" />
+		<result column="likes" property="likes" />
+	</resultMap>
+
+	<resultMap class="rcomment" id="rcommentRes">
+		<result column="rcomment_no" property="rcomment_no" />
+		<result column="rcomment_orgno" property="rcomment_orgno" />
+		<result column="rcomment_id" property="rcomment_id" />
+		<result column="rcomment_passwd" property="rcomment_passwd" />
+		<result column="rcomment_content" property="rcomment_content" />
+		<result column="rcomment_regdate" property="rcomment_regdate" />
+		
+	</resultMap>
+
+	<sql id="review-select-all">
+		SELECT * FROM REVIEW
+	</sql>
+	<sql id="select-rcomment">
+		SELECT * FROM REVIEW_COMMENT
+	</sql>
+
+	<sql id="rcomment-where-no">
+		where rcomment_no = #rcomment_no#
+	</sql>
+	<sql id="review-where-no">
+		WHERE rboard_no = #rboard_no#
+	</sql>
+
+	<select id="selectAllReview" resultMap="reviewRes">
+		<include refid="review-select-all" />
+		ORDER BY rboard_no DESC
+	</select>
+	
+	<select id="rcommentSelectAll" parameterClass="int" resultMap="rcommentRes">
+		SELECT * FROM REVIEW_COMMENT 
+		WHERE rcomment_orgno = #rcomment_orgno#
+		order by rcomment_no DESC
+	</select>
+	
+	<select id="reviewSelectOne" parameterClass="int"
+		resultMap="reviewRes">
+		<include refid="review-select-all" />
+		<include refid="review-where-no" />
+	</select>
+	
+	<select id="rcommentSelectOne" parameterClass = "int"
+	resultMap = "rcommentRes">
+	<include refid="select-rcomment"/>
+	<include refid= "rcomment-where-no"/></select>
+	
+	<select id="selectSearchReview" resultMap="reviewRes"
+		parameterClass="java.util.Map">
+		<include refid="review-select-all" />
+		where $searcht$ like '%'||'$searchk$'||'%'
+		order by rboard_no desc
+	</select>
+	<select id="selectLastNo" resultClass="review">
+		SELECT max(rboard_no) as
+		rboard_no FROM REVIEW
+	</select>
+	<select id="selectPassword" resultMap="reviewRes">
+		<include refid="review-select-all" />
+		<include refid="review-where-no" />
+		AND rboard_passwd = #rboard_passwd#
+	</select>
+
+	<select id="selectCommentPassword" resultMap="rcommentRes">
+		<include refid="select-rcomment" />
+		<include refid="rcomment-where-no" />
+		AND rcomment_passwd = #rcomment_passwd#
+	</select>
+	<!-- 리뷰작성 -->
+	<insert id="insertReview" parameterClass="review">
+		INSERT INTO
+		REVIEW(rboard_no,rboard_sub,rboard_id,rboard_name,rboard_passwd,rboard_goods,rboard_content,rboard_readhit,rboard_regdate,img_file,video_file,likes)
+		VALUES(review_no_seq.nextval,#rboard_sub#,#rboard_id#,#rboard_name#,#rboard_passwd#,#rboard_goods#,#rboard_content#,#rboard_readhit#,#rboard_regdate#,#img_file#,#video_file#,#likes#)
+	</insert>
+	<!-- 코멘트 작성 -->
+	<insert id="insertRcomment" parameterClass="rcomment">
+		INSERT INTO
+		REVIEW_COMMENT(rcomment_no,rcomment_orgno,rcomment_id,rcomment_passwd,rcomment_content,rcomment_regdate)
+		VALUES(review_comment_no_seq.nextval,#rcomment_orgno#,#rcomment_id#,#rcomment_passwd#,#rcomment_content#,#rcomment_regdate#)
+	</insert>
+	<!-- 리뷰수정 -->
+	<update id="updateReview" parameterClass="review">
+		UPDATE REVIEW SET RBOARD_SUB = #rboard_sub#,
+		rboard_name=#rboard_name#,
+		rboard_goods= #rboard_goods#,
+		rboard_content=#rboard_content#,
+		video_file=#video_file# 
+		<include refid="review-where-no" />
+	</update>
+
+	<update id="updateImgFile" parameterClass="review">
+		UPDATE REVIEW SET IMG_FILE = #img_file#
+		<include refid="review-where-no" />
+	</update>
+
+	<update id="updateVideoFile" parameterClass="review">
+		UPDATE REVIEW SET VIDEO-FILE = #video_file#
+		<include refid="review-where-no" />
+	</update>
+
+	<update id="updateReadHit" parameterClass="review">
+		UPDATE REVIEW SET rboard_readhit = rboard_readhit + 1
+		<include refid="review-where-no" />
+	</update>
+
+	<update id="updateLikes" parameterClass="review">
+		UPDATE REVIEW SET likes = likes + 1
+		<include refid="review-where-no" />
+	</update>
+
+	<delete id="deleteReview" parameterClass="review">
+		DELETE FROM REVIEW
+		<include refid="review-where-no" />
+	</delete>
+
+	<delete id="deleteRcomment" parameterClass="rcomment">
+		DELETE FROM REVIEW_COMMENT
+		<include refid="rcomment-where-no" />
+	</delete>
+
+</sqlMap>
